@@ -1,16 +1,12 @@
 package no.ntnu.idata2001;
 
-/**
- * Hello world!
- *
- */
 public class Unit {
     private String name;
     private int health;
     private int attack;
     private int armor;
 
-    // A constructor.
+    // Constructor
     public Unit() {
         this.name = name;
         this.health = health;
@@ -19,37 +15,42 @@ public class Unit {
     }
 
     /**
-     * @return String
+     * @return String name of the unit
      */
     public String getName() {
         return name;
     }
 
     /**
-     * @return int
+     * @return int health of the unit
      */
     public int getHealth() {
         return health;
     }
 
     /**
-     * @return int
+     * @return int health of the unit
      */
     public int getAttack() {
         return attack;
     }
 
     /**
-     * @return int
+     * @return int armor of the unit
      */
     public int getArmor() {
         return armor;
     }
 
     /**
-     * @param health
+     * Sets health of the unit
+     * 
+     * @param health of the unit
      */
     public void setHealth(int health) {
         this.health = health;
+        if (this.health < 0) {
+            this.health = 0;
+        }
     }
 }
