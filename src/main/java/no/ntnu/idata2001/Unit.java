@@ -42,6 +42,10 @@ public class Unit {
         return armor;
     }
 
+    public String toString() {
+        return getName() + "has " + getHealth() + "hp left.";
+    }
+
     /**
      * Sets health of the unit
      * 
@@ -53,4 +57,6 @@ public class Unit {
             this.health = 0;
         }
     }
+
+    // TODO: Implement getAttackBonus() and getResistBonus() methods.
 }
