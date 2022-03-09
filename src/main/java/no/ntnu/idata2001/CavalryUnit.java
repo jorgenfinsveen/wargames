@@ -4,15 +4,17 @@ public class CavalryUnit extends Unit {
 
     private int amountOfDealtHits = 0;
 
-    public CavalryUnit() {
+    public CavalryUnit(String name, int health) {
         /**
          * Jeg er ikke 110% sikker på hvordan super() fungerer. Vil dette gjøre
          * at subklassene arver de andre feltene i konstruktøren til Unit, men at
          * attack og armor feltene får unike verdier?
          */
-        super();
-        this.attack = 20;
-        this.armor = 12;
+        super(name, health, 20, 12);
+    }
+
+    public CavalryUnit(String name, int health, int attack, int armor) {
+        super(name, health, attack, armor);
     }
 
     /**

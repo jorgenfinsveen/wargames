@@ -11,6 +11,11 @@ package no.ntnu.idata2001;
  * får de implementert på en bra måte
  */
 
+/**
+ * Står at jeg fikk comitted på riktig måte både i terminalen og i sourcetree,
+ * men den dukker ikke opp her i vsc
+ */
+
 public abstract class Unit {
 
     /**
@@ -19,13 +24,13 @@ public abstract class Unit {
      * Kunne kanskje fått en kjapp definisjon på de forskjellige public, private
      * protected osv. er, når de burde brukes og hva som skiller dem fra hverandre
      */
-    protected String name;
-    protected int health;
-    protected int attack;
-    protected int armor;
+    private String name;
+    private int health;
+    private int attack;
+    private int armor;
 
     // Constructor
-    public Unit() {
+    public Unit(String name, int health, int attack, int armor) {
         this.name = name;
         this.health = health;
         this.attack = attack;
@@ -64,7 +69,7 @@ public abstract class Unit {
      * Grei nok string å bruke?
      */
     public String toString() {
-        return getName() + "has " + getHealth() + "hp left.";
+        return getName() + " has " + getHealth() + "hp left.";
     }
 
     /**
@@ -75,7 +80,7 @@ public abstract class Unit {
      * @param health of the unit
      */
     public void setHealth(int health) {
-        this.health -= health;
+        this.health = health;
         if (this.health < 0) {
             this.health = 0;
         }

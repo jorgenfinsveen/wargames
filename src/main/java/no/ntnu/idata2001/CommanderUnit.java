@@ -2,10 +2,8 @@ package no.ntnu.idata2001;
 
 public class CommanderUnit extends CavalryUnit {
 
-    public CommanderUnit() {
-        super();
-        this.attack = 25;
-        this.armor = 15;
+    public CommanderUnit(String name, int health) {
+        super(name, health, 25, 15);
     }
 
     /**

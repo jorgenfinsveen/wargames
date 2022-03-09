@@ -4,10 +4,8 @@ public class RangedUnit extends Unit {
 
     private int amountOfRecievedHits = 0;
 
-    public RangedUnit() {
-        super();
-        this.attack = 15;
-        this.armor = 8;
+    public RangedUnit(String name, int health) {
+        super(name, health, 15, 8);
     }
 
     /**
@@ -36,6 +34,7 @@ public class RangedUnit extends Unit {
         } else {
             bonus = 2;
         }
+        amountOfRecievedHits++;
         return bonus;
     }
 
