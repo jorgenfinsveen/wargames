@@ -2,16 +2,12 @@ package no.ntnu.idata2001;
 
 public class InfantryUnit extends Unit {
 
-    public InfantryUnit() {
-        super();
-        this.attack = 15;
-        this.armor = 10;
-
+    public InfantryUnit(String name, int health) {
+        super(name, health, 15, 10);
     }
 
-    @Override
-    public void attack(Unit opponent) {
-        opponent.setHealth(this.attack + getAttackBonus());
+    public InfantryUnit(String name, int health, int attack, int armor) {
+        super(name, health, attack, armor);
     }
 
     @Override
@@ -21,7 +17,6 @@ public class InfantryUnit extends Unit {
 
     @Override
     public int getResistBonus() {
-        // TODO Auto-generated method stub
         return 1;
     }
 }

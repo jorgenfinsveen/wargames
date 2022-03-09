@@ -6,7 +6,7 @@ public class CommanderUnit extends CavalryUnit {
         super(name, health, 25, 15);
     }
 
-    /**
-     * Er dette alt...?
-     */
+    public CommanderUnit(String name, int health, int attack, int armor) {
+        super(name, health, attack, armor);
+    }
 }

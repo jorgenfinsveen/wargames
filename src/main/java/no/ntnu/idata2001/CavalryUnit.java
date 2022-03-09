@@ -23,19 +23,17 @@ public class CavalryUnit extends Unit {
      * lik attack-metode, som gjør at jeg kan integrere den i Unit-klassen framfor
      * i subklassene
      */
-    @Override
-    public void attack(Unit opponent) {
-        if (amountOfDealtHits == 0) {
-            opponent.setHealth(this.attack + 4 + getAttackBonus());
-        } else {
-            opponent.setHealth(this.attack + getAttackBonus());
-        }
-        amountOfDealtHits++;
-    }
 
     @Override
     public int getAttackBonus() {
-        return 2;
+        int bonus;
+        if (amountOfDealtHits == 0) {
+            bonus = 6;
+        } else {
+            bonus = 2;
+        }
+        amountOfDealtHits++;
+        return bonus;
     }
 
     @Override

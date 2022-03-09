@@ -8,14 +8,8 @@ public class RangedUnit extends Unit {
         super(name, health, 15, 8);
     }
 
-    /**
-     * Denne metoden er såpass lik i de fleste sub-klassene at jeg kanskje kan
-     * implementere
-     * den i superklassen og heller override den ved behov
-     */
-    @Override
-    public void attack(Unit opponent) {
-        opponent.setHealth(this.attack + getAttackBonus());
+    public RangedUnit(String name, int health, int attack, int armor) {
+        super(name, health, attack, armor);
     }
 
     @Override
