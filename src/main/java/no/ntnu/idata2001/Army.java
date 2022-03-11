@@ -47,4 +47,16 @@ public class Army {
         Random rand = new Random();
         return units.get(rand.nextInt(units.size()));
     }
+
+    @Override
+    public boolean equals(Object object) {
+        return this.equals(object);
+    }
+
+    /**
+     * @Override
+     *           public int hashCode() {
+     *           return this.hashCode();
+     *           }
+     */
 }

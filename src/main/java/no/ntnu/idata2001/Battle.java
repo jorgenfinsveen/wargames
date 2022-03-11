@@ -15,7 +15,7 @@ public class Battle {
         Unit opponent2;
         Army victorious;
 
-        while (armyOne.hasUnits() && !armyTwo.hasUnits()) {
+        while (armyOne.hasUnits() && armyTwo.hasUnits()) {
             opponent1 = armyOne.getRandom();
             opponent2 = armyTwo.getRandom();
 
