@@ -21,15 +21,14 @@ public class RangedUnit extends Unit {
     public int getResistBonus() {
         int bonus = 0;
 
-        if (amountOfRecievedHits == 0) {
-            bonus = 6;
-        } else if (amountOfRecievedHits == 1) {
-            bonus = 4;
-        } else {
+        if (amountOfRecievedHits > 2) {
             bonus = 2;
+        } else if (amountOfRecievedHits > 1) {
+            bonus = 4;
+        } else if (amountOfRecievedHits == 0) {
+            bonus = 6;
         }
         amountOfRecievedHits++;
         return bonus;
     }
-
 }
