@@ -113,16 +113,19 @@ public class Army {
         return units.get(rand.nextInt(units.size()));
     }
 
+    // TODO: Check why theese methods makes the program crash
     /**
      * Checks if two objects are equal.
      * 
      * @param object to be compared with
      * @return boolean (equal = true)
      */
-    @Override
-    public boolean equals(Object object) {
-        return this.equals(object);
-    }
+    /**
+     * @Override
+     *           public boolean equals(Object object) {
+     *           return this.equals(object);
+     *           }
+     */
 
     /**
      * @Override

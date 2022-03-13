@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * 
  * @author jorgfi
  */
-public class SimulateTest {
+public class BattleTest {
 
     /**
      * Tests the simulation.
@@ -44,8 +44,8 @@ public class SimulateTest {
             armyList2.add(new RangedUnit("Spearman", 100));
         }
 
-        armyList1.add(new RangedUnit("Mountain King", 180));
-        armyList2.add(new RangedUnit("Gul´dan", 180));
+        armyList1.add(new CommanderUnit("Mountain King", 180));
+        armyList2.add(new CommanderUnit("Gul´dan", 180));
 
         Army army1 = new Army("Human army", armyList1);
         Army army2 = new Army("Orcish horde", armyList2);
