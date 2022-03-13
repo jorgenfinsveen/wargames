@@ -1,35 +1,31 @@
 package no.ntnu.idata2001;
 
 /**
- * Kunne egt ha trengt en kjapp gjennomgang på commit, og at pom-filen
- * har det den trenger av informasjon
+ * This is a superclass
+ * Represents a Unit in the game. The other unit-subclasses inherit
+ * the Unit-class methods. It is an abstract class.
+ * 
+ * @author jorgfi
+ * @version 1.0 SNAPSHOT
  */
-
-/**
- * Kunne også trengt en oppfriskning i hvordan man lager passende
- * testklasser til alle klassene, bare så jeg er sikker på at jeg
- * får de implementert på en bra måte
- */
-
-/**
- * Står at jeg fikk comitted på riktig måte både i terminalen og i sourcetree,
- * men den dukker ikke opp her i vsc
- */
-
 public abstract class Unit {
 
-    /**
-     * Blir det riktig å bruke protected her? Fikk feilmelding når jeg
-     * brukte private, men vil jo implementere encapsulation så mye som mulig.
-     * Kunne kanskje fått en kjapp definisjon på de forskjellige public, private
-     * protected osv. er, når de burde brukes og hva som skiller dem fra hverandre
-     */
+    // Fields
     private String name;
     private int health;
     private int attack;
     private int armor;
 
-    // Constructor
+    /**
+     * Constructor
+     * 
+     * @param name   of the unit
+     * @param health show the quantified status of a units life
+     * @param attack represents the amount of damage that the unit is
+     *               capable of causing
+     * @param armor  represents extra protection on top of the units health
+     */
+
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
         this.health = health;
@@ -66,18 +62,19 @@ public abstract class Unit {
     }
 
     /**
-     * Grei nok string å bruke?
+     * Simple method for generating a string which shows the
+     * units status. Mainly for debugging purposes
+     * 
+     * @return string consisting the units name and health
      */
     public String toString() {
         return getName() + " has " + getHealth() + "hp left.";
     }
 
     /**
-     * Burde jeg gjøre om på hvordan health justeres?
-     * Evt burde denne mutatoren brukes for å "skade" en
-     * unit? Hvordan kan jeg evt ellers gjøre det her?
+     * Adjusts the health-field of the unit.
      * 
-     * @param health of the unit
+     * @param health is the new health which will be adjusted to
      */
     public void setHealth(int health) {
         this.health = health;
@@ -86,6 +83,12 @@ public abstract class Unit {
         }
     }
 
+    /**
+     * Attack another unit.
+     * 
+     * @param opponent is the unit which are to be attacked
+     *                 the attack-formulae is defined in the assignment
+     */
     public void attack(Unit opponent) {
         int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
                 + (opponent.getArmor() + opponent.getResistBonus());

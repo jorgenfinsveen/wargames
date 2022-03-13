@@ -1,29 +1,55 @@
 package no.ntnu.idata2001;
 
+/**
+ * A sub-class that inherit from the super class Unit. It represents
+ * a unit of the type cavalry in the game.
+ * 
+ * @author jorgfi
+ */
 public class CavalryUnit extends Unit {
+
+    /**
+     * Field for counting the amount of times this unit has
+     * attacked another unit. Relevant for the
+     * getAttackBonus() method.
+     */
 
     private int amountOfDealtHits = 0;
 
+    /**
+     * Simple constructor with suggested values for attack
+     * and armor
+     * 
+     * @param name   represents the name of the unit
+     * @param health represents the health of the unit
+     */
     public CavalryUnit(String name, int health) {
-        /**
-         * Jeg er ikke 110% sikker på hvordan super() fungerer. Vil dette gjøre
-         * at subklassene arver de andre feltene i konstruktøren til Unit, men at
-         * attack og armor feltene får unike verdier?
-         */
+        // Inherits name and health from the super-class
+        // But has own values for attack and armor
         super(name, health, 20, 12);
     }
 
+    /**
+     * More advanced constructor which contains all fields
+     * from the super-class
+     * 
+     * @param name   represents the units name
+     * @param health represents the heath of the unit
+     * @param attack represents the amount of damage possible for this unit
+     * @param armor  represents the protection around the unit
+     */
     public CavalryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
     }
 
     /**
-     * Det er kanskje bedre mtp responsibility driven design at if-setningene er
-     * i getAttackBonus funksjonen framfor i attack. Da vil alle subklassene ha helt
-     * lik attack-metode, som gjør at jeg kan integrere den i Unit-klassen framfor
-     * i subklassene
+     * Abstract method from the Unit class.
+     * Calculates the bonus damage for which the unit can deal
+     * 
+     * @return the bonus as an integer. The units attack bonus
+     *         starts at a value of 6, but decreases to 2 after the
+     *         first attack
      */
-
     @Override
     public int getAttackBonus() {
         int bonus;
@@ -36,6 +62,13 @@ public class CavalryUnit extends Unit {
         return bonus;
     }
 
+    /**
+     * Abstract method from the Unit class.
+     * Calculates the bonus resistance that the unit has
+     * 
+     * @return the integer 1, which is the add-on resistance
+     *         which this unit recieves
+     */
     @Override
     public int getResistBonus() {
         return 1;

@@ -1,15 +1,38 @@
 package no.ntnu.idata2001;
 
+/**
+ * Represents a simulation of a battle between to armies.
+ * 
+ * @author jorgfi
+ */
 public class Battle {
 
+    // Fields which contain the armies which will be fighting
     private Army armyOne;
     private Army armyTwo;
 
+    /**
+     * Constructor that takes in two Army-objects as parameters
+     * 
+     * @param armyOne the first army
+     * @param armyTwo the opposing army
+     */
     public Battle(Army armyOne, Army armyTwo) {
         this.armyOne = armyOne;
         this.armyTwo = armyTwo;
     }
 
+    /**
+     * Simulates a battle between the two armies.
+     * While both armies has units in them, the method
+     * will pick two random units from each army and run
+     * their attack-methods on each other. When one of the
+     * opponents dies, the loosing opponent will be removed
+     * from its army, since its now "dead". This loop will
+     * continue until one of the armies dont have ant units left.
+     * 
+     * @return the army which conqures the other army
+     */
     public Army simulate() {
         Unit opponent1;
         Unit opponent2;
@@ -37,6 +60,9 @@ public class Battle {
         return victorious;
     }
 
+    /**
+     * @return String containing the name of the victorious army
+     */
     public String toString() {
         return simulate().getName() + " won the battle!";
     }

@@ -4,9 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit test for simple App.
+ * Testing class for the CavalryUnit-class.
+ * 
+ * @author jorgfi
  */
 public class CavalryUnitTest {
+
+    /**
+     * Decalres an instance of the CavalryUnit-class with
+     * deafult values for attack and health values.
+     * Checks if all fields of the object are correct.
+     */
     @Test
     public void testCreationOfCavalryUnitObjectWithMainConstructor() {
 
@@ -18,6 +26,11 @@ public class CavalryUnitTest {
         assertEquals(50, cavalryUnit1.getArmor());
     }
 
+    /**
+     * Declares an instance of the CavalryUnit-class with
+     * all customizeable fields. Checks if all fields of the
+     * object is correct.
+     */
     @Test
     public void testCreationOfCavalryUnitObjectWithSimpleConstructor() {
 
@@ -29,6 +42,10 @@ public class CavalryUnitTest {
         assertEquals(12, cavalryUnit2.getArmor());
     }
 
+    /**
+     * Checks that the Cavalry-units getAttackBonus() and
+     * getResistBonus() gives the correct values as result.
+     */
     @Test
     public void testCorrectValueReturnedFromGetAttackBonusAndGetResistBonus() {
         Unit cavalryUnit1 = new CavalryUnit("Knight", 100, 75, 50);

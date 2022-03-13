@@ -4,8 +4,25 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * A test-class which tests the Battle-class. It is also used
+ * to test that the entire game is working so far.
+ * 
+ * @author jorgfi
+ */
 public class SimulateTest {
 
+    /**
+     * Tests the simulation.
+     * Declares two ArrayLists which represents two armies. It
+     * fills them up with different warriors based on the example
+     * from the task-assignment.
+     * The two ArrayLists are used as parameters for two different
+     * armies. The main constructor of the army-class is used here.
+     * Declares an instance of the battle class and simulates a
+     * battle between the two armies. The winner army are to be
+     * written out to the console.
+     */
     @Test
     public void testSimulation() {
 

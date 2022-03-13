@@ -4,9 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit test for simple App.
+ * Testclass for the RangedUnit-class.
+ * 
+ * @author jorgfi
  */
 public class RangedUnitTest {
+
+    /**
+     * Declares an instance of the RangedUnit-class with the
+     * main constructor. Checks that all paramaters are correct.
+     */
     @Test
     public void testCreationOfRangedUnitObjectWithMainConstructor() {
 
@@ -18,6 +25,11 @@ public class RangedUnitTest {
         assertEquals(50, rangedUnit1.getArmor());
     }
 
+    /**
+     * Declares an instance of the RangedUnit-class with the
+     * simplified constructor. Checks that both given and default
+     * parameters are correct.
+     */
     @Test
     public void testCreationOfRangedUnitObjectWithSimpleConstructor() {
 
@@ -29,6 +41,10 @@ public class RangedUnitTest {
         assertEquals(8, rangedUnit2.getArmor());
     }
 
+    /**
+     * Checks that the Ranger-units getAttackBonus() and
+     * getResistBonus() gives the correct values as result.
+     */
     @Test
     public void testCorrectValueReturnedFromGetAttackBonusAndGetResistBonus() {
         Unit rangedUnit1 = new RangedUnit("Archer", 100, 75, 50);

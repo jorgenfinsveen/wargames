@@ -4,9 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 /**
- * Unit test for simple App.
+ * Testing class for the InfantryUnit-class.
+ * 
+ * @author jorgfi
  */
 public class InfantryUnitTest {
+
+    /**
+     * Declares an instance of the InfantryUnit-class with the
+     * main constructor. Checks that all paramaters are correct.
+     */
     @Test
     public void testCreationOfInfantryUnitObjectWithMainConstructor() {
 
@@ -20,6 +27,11 @@ public class InfantryUnitTest {
         assertEquals(1, infantryUnit1.getResistBonus());
     }
 
+    /**
+     * Declares an instance of the InfantryUnit-class with the
+     * simplified constructor. Checks that both given and default
+     * parameters are correct.
+     */
     @Test
     public void testCreationOfInfantryUnitObjectWithSimpleConstructor() {
 
