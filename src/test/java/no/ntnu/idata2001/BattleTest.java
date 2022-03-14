@@ -1,5 +1,7 @@
 package no.ntnu.idata2001;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
@@ -26,8 +28,8 @@ public class BattleTest {
     @Test
     public void testSimulation() {
 
-        ArrayList armyList1 = new ArrayList<Unit>();
-        ArrayList armyList2 = new ArrayList<Unit>();
+        ArrayList<Unit> armyList1 = new ArrayList<>();
+        ArrayList<Unit> armyList2 = new ArrayList<>();
 
         for (int i = 0; i < 500; i++) {
             armyList1.add(new InfantryUnit("Footman", 100));
@@ -52,7 +54,9 @@ public class BattleTest {
 
         Battle battle = new Battle(army1, army2);
         Army winner = battle.simulate();
-        System.out.println(winner.getName() + " - " + winner.hasUnits());
+        System.out.println(winner.getName() + " wins with " + winner.getAllUnits().size() +
+                " warrior left");
+        assertTrue(winner.hasUnits());
+        System.out.println(winner.getAllUnits());
     }
-
 }

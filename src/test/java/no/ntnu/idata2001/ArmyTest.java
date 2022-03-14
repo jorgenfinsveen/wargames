@@ -27,7 +27,7 @@ public class ArmyTest {
      */
     @Test
     public void testCreationOfArmyObjectWithMainMethod() {
-        ArrayList armyList = new ArrayList<Unit>();
+        ArrayList<Unit> armyList = new ArrayList<>();
 
         // Fills ArrayList with 500 InfantryUnit instances
         for (int i = 0; i < 500; i++) {
