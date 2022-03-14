@@ -2,6 +2,7 @@ package no.ntnu.idata2001;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -99,7 +100,7 @@ public class Army {
      * 
      * @return List
      */
-    public List getAllUnits() {
+    public ArrayList<Unit> getAllUnits() {
         return this.units;
     }
 
@@ -120,17 +121,20 @@ public class Army {
      * @param object to be compared with
      * @return boolean (equal = true)
      */
-    /**
-     * @Override
-     *           public boolean equals(Object object) {
-     *           return this.equals(object);
-     *           }
-     */
 
-    /**
-     * @Override
-     *           public int hashCode() {
-     *           return this.hashCode();
-     *           }
-     */
+    @Override
+    public boolean equals(Object object) {
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
+            return false;
+        Army army = (Army) object;
+        return Objects.equals(name, army.name) && Objects.equals(units, army.units);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, units);
+    }
+
 }
