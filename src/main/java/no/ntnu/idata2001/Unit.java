@@ -6,7 +6,7 @@ package no.ntnu.idata2001;
  * the Unit-class methods. It is an abstract class.
  * 
  * @author jorgfi
- * @version 1.0 SNAPSHOT
+ * @version 1.0-SNAPSHOT
  */
 public abstract class Unit {
 
@@ -25,7 +25,6 @@ public abstract class Unit {
      *               capable of causing
      * @param armor  represents extra protection on top of the units health
      */
-
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
         this.health = health;
@@ -37,28 +36,28 @@ public abstract class Unit {
      * @return String name of the unit
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
      * @return int health of the unit
      */
     public int getHealth() {
-        return health;
+        return this.health;
     }
 
     /**
      * @return int health of the unit
      */
     public int getAttack() {
-        return attack;
+        return this.attack;
     }
 
     /**
      * @return int armor of the unit
      */
     public int getArmor() {
-        return armor;
+        return this.armor;
     }
 
     /**
@@ -92,9 +91,17 @@ public abstract class Unit {
     public void attack(Unit opponent) {
         int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
                 + (opponent.getArmor() + opponent.getResistBonus());
+
         opponent.setHealth(newHealth);
     }
 
+    /**
+     * Abstract methods that returns unique values for
+     * each sub-class which inherits from this class.
+     * 
+     * @return integer value representing extra damage
+     * @return integer value representing extra protection
+     */
     public abstract int getAttackBonus();
 
     public abstract int getResistBonus();

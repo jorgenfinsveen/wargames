@@ -9,12 +9,12 @@ package no.ntnu.idata2001;
 public class CavalryUnit extends Unit {
 
     /**
-     * Field for counting the amount of times this unit has
-     * attacked another unit. Relevant for the
+     * Field which tells if the unit has attacked
+     * another unit. Relevant for the
      * getAttackBonus() method.
      */
 
-    private int amountOfDealtHits = 0;
+    private boolean dealtHits = false;
 
     /**
      * Simple constructor with suggested values for attack
@@ -53,12 +53,12 @@ public class CavalryUnit extends Unit {
     @Override
     public int getAttackBonus() {
         int bonus;
-        if (amountOfDealtHits == 0) {
+        if (!dealtHits) {
             bonus = 6;
         } else {
             bonus = 2;
         }
-        amountOfDealtHits++;
+        dealtHits = true;
         return bonus;
     }
 

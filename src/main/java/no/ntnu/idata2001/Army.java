@@ -63,7 +63,11 @@ public class Army {
      * @param unit to be added
      */
     public void add(Unit unit) {
-        this.units.add(unit);
+        if (unit != null) {
+            this.units.add(unit);
+        } else {
+            throw new IllegalArgumentException("The input was invalid");
+        }
     }
 
     /**
@@ -73,7 +77,11 @@ public class Army {
      * @param units list of units to be added to the army
      */
     public void addAll(List<Unit> units) {
-        this.units.addAll(units);
+        if (units != null) {
+            this.units.addAll(units);
+        } else {
+            throw new IllegalArgumentException("There was no warriors in the army");
+        }
     }
 
     /**
@@ -83,7 +91,11 @@ public class Army {
      * @param unit the unit which are to be removed
      */
     public void remove(Unit unit) {
-        this.units.remove(unit);
+        if (unit != null) {
+            this.units.remove(unit);
+        } else {
+            throw new IllegalStateException("ERROR: Unit doesnt exist");
+        }
     }
 
     /**
@@ -101,7 +113,7 @@ public class Army {
      * @return List
      */
     public ArrayList<Unit> getAllUnits() {
-        return this.units;
+        return (ArrayList<Unit>) this.units;
     }
 
     /**
@@ -114,14 +126,12 @@ public class Army {
         return units.get(rand.nextInt(units.size()));
     }
 
-    // TODO: Check why theese methods makes the program crash
     /**
      * Checks if two objects are equal.
      * 
      * @param object to be compared with
      * @return boolean (equal = true)
      */
-
     @Override
     public boolean equals(Object object) {
         if (this == object)
@@ -132,6 +142,11 @@ public class Army {
         return Objects.equals(name, army.name) && Objects.equals(units, army.units);
     }
 
+    /**
+     * Generates a hashcode based on the army name and contents
+     * 
+     * @return int hashcode
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, units);
