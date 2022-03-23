@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Testing class for the InfantryUnit-class.
+ * Tests the InfantryUnit-class.
  * 
  * @author jorgfi
  */

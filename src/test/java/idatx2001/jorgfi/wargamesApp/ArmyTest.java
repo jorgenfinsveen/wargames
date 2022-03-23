@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * A test-class which tests the Army-class.
+ * Tests the Army-class.
  * 
  * @author jorgfi
  */

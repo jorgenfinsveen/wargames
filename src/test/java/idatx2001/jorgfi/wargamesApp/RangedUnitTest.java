@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Testclass for the RangedUnit-class.
+ * Tests the RangedUnit-class.
  * 
  * @author jorgfi
  */

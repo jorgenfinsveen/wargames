@@ -31,7 +31,7 @@ public class Battle {
      * from its army, since its now "dead". This loop will
      * continue until one of the armies dont have ant units left.
      * 
-     * @return the army which conqures the other army
+     * @return Army-object which are victorious
      */
     public Army simulate() {
         Unit opponent1;
@@ -61,6 +61,7 @@ public class Battle {
     }
 
     /**
+     * Calls simulate() and returns the winner as a String.
      * @return String containing the name of the victorious army
      */
     public String toString() {

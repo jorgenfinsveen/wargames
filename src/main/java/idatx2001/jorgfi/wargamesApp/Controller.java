@@ -3,7 +3,8 @@ package idatx2001.jorgfi.wargamesApp;
 
 
 /**
- * Is responsible for handling button events and returning the proper response
+ * Handles button events and returns the proper response for user interaction
+ * with the application.
  * @author jorgfi
  */
 public class Controller {

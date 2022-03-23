@@ -1,9 +1,8 @@
 package idatx2001.jorgfi.wargamesApp;
 
 /**
- * This is a superclass
- * Represents a Unit in the game. The other unit-subclasses inherit
- * the Unit-class methods. It is an abstract class.
+ * Represents a Unit in the game. The subclasses inherit
+ * the Unit-class methods. Is an abstract class.
  * 
  * @author jorgfi
  * @version 1.0-SNAPSHOT
@@ -17,13 +16,13 @@ public abstract class Unit {
     private int armor;
 
     /**
-     * Constructor
+     * Constructor initializing a Unit-instance. 
      * 
-     * @param name   of the unit
-     * @param health show the quantified status of a units life
-     * @param attack represents the amount of damage that the unit is
+     * @param name   String name of the unit
+     * @param health int the quantified status of a units life
+     * @param attack int representing the amount of damage that the unit is
      *               capable of causing
-     * @param armor  represents extra protection on top of the units health
+     * @param armor  int representing extra protection on top of the units health
      */
     public Unit(String name, int health, int attack, int armor) {
         this.name = name;
@@ -33,6 +32,8 @@ public abstract class Unit {
     }
 
     /**
+     * Returns the name of the unit-object
+     * 
      * @return String name of the unit
      */
     public String getName() {
@@ -40,6 +41,8 @@ public abstract class Unit {
     }
 
     /**
+     * Gets the health of the unit-object
+     * 
      * @return int health of the unit
      */
     public int getHealth() {
@@ -47,6 +50,8 @@ public abstract class Unit {
     }
 
     /**
+     * Returns the attack for this unit-object
+     * 
      * @return int health of the unit
      */
     public int getAttack() {
@@ -54,6 +59,8 @@ public abstract class Unit {
     }
 
     /**
+     * Gets the armor for this unit-object
+     * 
      * @return int armor of the unit
      */
     public int getArmor() {
@@ -61,19 +68,19 @@ public abstract class Unit {
     }
 
     /**
-     * Simple method for generating a string which shows the
-     * units status. Mainly for debugging purposes
+     * Generating a string which shows the
+     * units name and remaining health.
      * 
-     * @return string consisting the units name and health
+     * @return String consisting the units name and health
      */
     public String toString() {
         return getName() + " has " + getHealth() + "hp left.";
     }
 
     /**
-     * Adjusts the health-field of the unit.
+     * Mutates the health-field of the unit.
      * 
-     * @param health is the new health which will be adjusted to
+     * @param health int the new health which will be adjusted to
      */
     public void setHealth(int health) {
         this.health = health;
@@ -83,10 +90,9 @@ public abstract class Unit {
     }
 
     /**
-     * Attack another unit.
+     * Deploys an attack on a opponent.
      * 
-     * @param opponent is the unit which are to be attacked
-     *                 the attack-formulae is defined in the assignment
+     * @param opponent Unit which are to be attacked
      */
     public void attack(Unit opponent) {
         int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
@@ -96,13 +102,15 @@ public abstract class Unit {
     }
 
     /**
-     * Abstract methods that returns unique values for
-     * each sub-class which inherits from this class.
-     * 
-     * @return integer value representing extra damage
-     * @return integer value representing extra protection
+     * Returns attack bonus depening on the Unit sub-class which inherits this method. 
+     * @return int value representing extra damage
      */
     public abstract int getAttackBonus();
 
+    /**
+     * Returns unique resist bonus for each sub-class which inherits from this class. 
+     * 
+     * @return in value representing extra protection
+     */
     public abstract int getResistBonus();
 }

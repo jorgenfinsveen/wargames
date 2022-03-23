@@ -9,20 +9,20 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
- * Is responsible for launching the graphical user interface
+ * Launches the application and the graphical user interface
  * @author jorgfi
  */
 public class GUI extends Application {
 
     /**
-     * Initializes the entire application
+     * Initializes the application
      */
     public static void main(String[] args) {
         launch(args);
     }
 
     /**
-     * Opens a windowtab and fills it with content from the main.fxml file.
+     * Opens a windowtab and fills it with content from the index.fxml file.
      * Will try to load the file and print the stacktrace to terminal if it 
      * should fail to load.
      */

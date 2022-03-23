@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * A test-class which tests the Battle-class. It is also used
+ * Tests the Battle-class. It is also used
  * to test that the entire game is working so far.
  * 
  * @author jorgfi

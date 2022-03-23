@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * Testing class for the CavalryUnit-class.
+ * Tests the CavalryUnit-class.
  * 
  * @author jorgfi
  */

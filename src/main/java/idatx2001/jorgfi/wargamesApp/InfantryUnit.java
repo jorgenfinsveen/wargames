@@ -1,9 +1,8 @@
 package idatx2001.jorgfi.wargamesApp;
 
 /**
- * A sub-class of the superclass Unit.
- * It inherits the Unit-class fields and methods, and represents
- * a unit of the type infantry in the wargame
+ * Represents a unit of the type infantry in the wargame.
+ * Inherits from the Unit-class.
  * 
  * @author jorgfi
  */
@@ -12,30 +11,30 @@ public class InfantryUnit extends Unit {
     /**
      * Simplified constructor with default values for attack and armor
      * 
-     * @param name   represents the name of the infantry-unit
-     * @param health represents the health of the infantry-unit
+     * @param name   String representing the name of the infantry-unit
+     * @param health int the health of the infantry-unit
      */
     public InfantryUnit(String name, int health) {
         super(name, health, 15, 10);
     }
 
     /**
-     * A more advanced constructor which allows full customization of the
-     * the infantry-units fields
+     * Constructs an InfantryUnit-instance with all fields customizeable.
      * 
-     * @param name   represents the name of the infantry-unit
-     * @param health represents the health of the infantry-unit
-     * @param attack represents the amount of damage that the unit can do
-     * @param armor  represents the protection of the unit
+     * @param name   String representing the name of the infantry-unit
+     * @param health int the health of the infantry-unit
+     * @param attack int the amount of damage that the unit can do
+     * @param armor  int the protection of the unit
      */
     public InfantryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
     }
 
     /**
-     * Abstract method inherited from the Unit-class.
+     * Abstract method inherited from the Unit-class returning 
+     * the attack bonus of this unit
      * 
-     * @return the amount of extra damage that the unit can
+     * @return int the amount of extra damage that the unit can
      *         deal.
      */
     @Override
@@ -44,9 +43,10 @@ public class InfantryUnit extends Unit {
     }
 
     /**
-     * Abstract method inherited from the Unit-class.
+     * Abstract method inherited from the Unit-class returning 
+     * the resist bonus of this unit
      * 
-     * @return the amount of extra resistanse that the unit has.
+     * @return int the amount of extra resistanse that the unit has.
      */
     @Override
     public int getResistBonus() {

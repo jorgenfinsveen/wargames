@@ -1,15 +1,15 @@
 package idatx2001.jorgfi.wargamesApp;
 
 /**
- * A sub-class which inherits from the Unit-class.
  * Represents a ranger unit in the game.
+ * Inherits from the Unit-class.
  * 
  * @author jorgfi
  */
 public class RangedUnit extends Unit {
 
     /**
-     * A field that represents the amount of attacks that
+     * Field Represents the amount of attacks that
      * the unit has recieved. Is relevant for the
      * getResistBonus() method.
      */
@@ -18,29 +18,30 @@ public class RangedUnit extends Unit {
     /**
      * Simplified constructor with default values for attack and armor
      * 
-     * @param name   represents the name of the ranger
-     * @param health represents the health of the ranger
+     * @param name   String representing the name of the ranger
+     * @param health int the health of the ranger
      */
     public RangedUnit(String name, int health) {
         super(name, health, 15, 8);
     }
 
     /**
-     * A constructor with all customizeable fields for the ranger-unit
+     * Constructs a RangedUnit-instance without default values for attack and armor
      * 
-     * @param name   represents the name of the ranger
-     * @param health represents the health of the ranger
-     * @param attack represents the rangers damage capability
-     * @param armor  represents the rangers protection
+     * @param name   String representing the name of the ranger
+     * @param health int the health of the ranger
+     * @param attack int the rangers damage capability
+     * @param armor  int the rangers protection
      */
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
     }
 
     /**
+     * Calculates the attack bonus of this unit and returns it.
      * Abstract method inherited from the Unit-class.
      * 
-     * @returns the amount of extra damage that the unit can
+     * @return int the amount of extra damage that the unit can
      *          deal to the opponent.
      */
     @Override
@@ -49,6 +50,7 @@ public class RangedUnit extends Unit {
     }
 
     /**
+     * Calculates the resist bonus of this unit and returns it.
      * Abstract method inherited from the Unit-class.
      * 
      * @return the amount of extra protection that the unit

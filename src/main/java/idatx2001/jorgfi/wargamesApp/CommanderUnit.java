@@ -12,19 +12,21 @@ public class CommanderUnit extends CavalryUnit {
     /**
      * Simplified constructor with default values for attack and armor
      * 
-     * @param name   represents the commanders name
-     * @param health represents the commanders health
+     * @param name   String representing the commanders name
+     * @param health int representing the commanders health
      */
     public CommanderUnit(String name, int health) {
         super(name, health, 25, 15);
     }
 
     /**
-     * An advanced constructor with full customization options for the
+     * Constructor with full customization options for the
      * commanders fields
      * 
-     * @param all are inherited from CavalryUnit, which again
-     *            inherits them from the Unit-class
+     * @param name   String representing the commanders name
+     * @param health int representing the commanders health
+     * @param attack int capable damage dealing
+     * @param armor int extra layer of protection
      */
     public CommanderUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);

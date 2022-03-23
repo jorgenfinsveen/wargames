@@ -19,11 +19,11 @@ public class Army {
     private List<Unit> units;
 
     /**
-     * A constructor which only takes the name parameter.
-     * It also declares a list which can be filled with
-     * units.
+     * Constructor which only takes the name parameter.
+     * Declares a list which can be filled with
+     * units through add() or addAll().
      * 
-     * @param name represents the name of the army
+     * @param name String that represents the name of the army
      */
     public Army(String name) {
         this.name = name;
@@ -31,13 +31,13 @@ public class Army {
     }
 
     /**
-     * A constructor which takes both name and units
+     * Constructor which takes both name and units
      * as parameters. This constructor allows the user
      * to insert a prefilled list of units which the
-     * army consists of.
+     * army will consist of.
      * 
-     * @param name  represents the name of the army
-     * @param units represents a list of units which are the
+     * @param name  String that represents the name of the army
+     * @param units  List which represents a list of units which are the
      *              soldiers of the army.
      */
     public Army(String name, List<Unit> units) {
@@ -48,7 +48,7 @@ public class Army {
     }
 
     /**
-     * Acesssor-method to get the name of the army
+     * Returns the name of the Army-object as a string
      * 
      * @return String name of the army
      */
@@ -57,7 +57,7 @@ public class Army {
     }
 
     /**
-     * Method to add a unit to the units ArrayList which
+     * Adds a single unit to the units ArrayList which
      * represents the army members.
      * 
      * @param unit to be added
@@ -71,10 +71,10 @@ public class Army {
     }
 
     /**
-     * Method that adds all elements of a list to the units
+     * Adds all elements of a list to the units
      * ArrayList, which holds the members of the army
      * 
-     * @param units list of units to be added to the army
+     * @param units List of units to be added to the army
      */
     public void addAll(List<Unit> units) {
         if (units != null) {
@@ -85,8 +85,7 @@ public class Army {
     }
 
     /**
-     * Method that removes a unit from the army. Units are
-     * removed when the health equals 0 in the wargame.
+     * Removes a unit from the units ArrayList in the Army instance.  
      * 
      * @param unit the unit which are to be removed
      */
@@ -99,7 +98,7 @@ public class Army {
     }
 
     /**
-     * Method that checks if the army has any units in it.
+     * Checks if the army contains one or several units.
      * 
      * @return boolean (empty = true)
      */
@@ -108,7 +107,7 @@ public class Army {
     }
 
     /**
-     * Method that returns all the units in the army
+     * Returns all the units in the army
      * 
      * @return List
      */

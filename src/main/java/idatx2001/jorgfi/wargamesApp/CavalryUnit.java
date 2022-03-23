@@ -1,7 +1,7 @@
 package idatx2001.jorgfi.wargamesApp;
 
 /**
- * A sub-class that inherit from the super class Unit. It represents
+ * Sub-class that inherit from the super class Unit representing
  * a unit of the type cavalry in the game.
  * 
  * @author jorgfi
@@ -13,15 +13,14 @@ public class CavalryUnit extends Unit {
      * another unit. Relevant for the
      * getAttackBonus() method.
      */
-
     private boolean dealtHits = false;
 
     /**
      * Simple constructor with suggested values for attack
      * and armor
      * 
-     * @param name   represents the name of the unit
-     * @param health represents the health of the unit
+     * @param name   String representing the name of the unit
+     * @param health int representing the health of the unit
      */
     public CavalryUnit(String name, int health) {
         // Inherits name and health from the super-class
@@ -30,13 +29,13 @@ public class CavalryUnit extends Unit {
     }
 
     /**
-     * More advanced constructor which contains all fields
-     * from the super-class
+     * More advanced constructor containing all fields
+     * from the Unit super-class
      * 
-     * @param name   represents the units name
-     * @param health represents the heath of the unit
-     * @param attack represents the amount of damage possible for this unit
-     * @param armor  represents the protection around the unit
+     * @param name   String representing the units name
+     * @param health int representing the heath of the unit
+     * @param attack int representing the amount of damage possible for this unit
+     * @param armor  int representing the protection around the unit
      */
     public CavalryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
@@ -44,9 +43,9 @@ public class CavalryUnit extends Unit {
 
     /**
      * Abstract method from the Unit class.
-     * Calculates the bonus damage for which the unit can deal
+     * Calculates the bonus damage which the unit can deal
      * 
-     * @return the bonus as an integer. The units attack bonus
+     * @return int bonus. The units attack bonus
      *         starts at a value of 6, but decreases to 2 after the
      *         first attack
      */
@@ -64,9 +63,9 @@ public class CavalryUnit extends Unit {
 
     /**
      * Abstract method from the Unit class.
-     * Calculates the bonus resistance that the unit has
+     * Calculates the bonus resistance for the unit 
      * 
-     * @return the integer 1, which is the add-on resistance
+     * @return int 1, which is the add-on resistance
      *         which this unit recieves
      */
     @Override
