@@ -1,4 +1,4 @@
-package no.ntnu.idata2001;
+package idatx2001.jorgfi.wargamesApp;
 
 /**
  * Represents a more capable verion of a CavalryUnit. It

@@ -1,7 +1,8 @@
-package no.ntnu.idata2001;
+package idatx2001.jorgfi.wargamesApp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
+
 
 /**
  * Testclass for the RangedUnit-class.

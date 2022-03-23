@@ -1,4 +1,4 @@
-package no.ntnu.idata2001;
+package idatx2001.jorgfi.wargamesApp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,7 +94,7 @@ public class Army {
         if (unit != null) {
             this.units.remove(unit);
         } else {
-            throw new IllegalStateException("ERROR: Unit doesnt exist");
+            throw new IllegalArgumentException("ERROR: Unit doesnt exist");
         }
     }
 

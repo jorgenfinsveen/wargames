@@ -1,8 +1,9 @@
-package no.ntnu.idata2001;
+package idatx2001.jorgfi.wargamesApp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
+
 
 /**
  * A test-class which tests the Army-class.
@@ -50,6 +51,8 @@ public class ArmyTest {
         // Tests that all units were added to the army
         assertEquals(armyList, army.getAllUnits());
     }
+
+    // Todo: Add negative tests for constructor with invalid parameters
 
     /**
      * Tests all acessormethods

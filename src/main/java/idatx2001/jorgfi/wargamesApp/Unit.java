@@ -1,4 +1,4 @@
-package no.ntnu.idata2001;
+package idatx2001.jorgfi.wargamesApp;
 
 /**
  * This is a superclass

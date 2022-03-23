@@ -1,10 +1,11 @@
-package no.ntnu.idata2001;
+package idatx2001.jorgfi.wargamesApp;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
+
 
 /**
  * A test-class which tests the Battle-class. It is also used
