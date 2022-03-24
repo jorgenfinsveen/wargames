@@ -26,8 +26,12 @@ public class Army {
      * @param name String that represents the name of the army
      */
     public Army(String name) {
-        this.name = name;
-        this.units = new ArrayList<>();
+        if (name != null && !"".equals(name)) {
+            this.name = name;
+            this.units = new ArrayList<>();
+        } else {
+            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
+        }
     }
 
     /**
@@ -41,10 +45,12 @@ public class Army {
      *              soldiers of the army.
      */
     public Army(String name, List<Unit> units) {
-        this.name = name;
-        // Declares an ArrayList and fills it with the contents of units
-        this.units = new ArrayList<>();
-        this.units.addAll(units);
+        if (name != null && !" ".equals(name) && units.size() > 0) {
+            this.name = name;
+            // Declares an ArrayList and fills it with the contents of units
+            this.units = new ArrayList<>();
+            this.units.addAll(units);
+        } else throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
     }
 
     /**
@@ -121,8 +127,12 @@ public class Army {
      * @return random Unit
      */
     public Unit getRandom() {
+        Unit randomUnit = null;
         Random rand = new Random();
-        return units.get(rand.nextInt(units.size()));
+        if (units.size() > 0) {
+            randomUnit = units.get(rand.nextInt(units.size()));
+        }
+        return randomUnit;
     }
 
     /**

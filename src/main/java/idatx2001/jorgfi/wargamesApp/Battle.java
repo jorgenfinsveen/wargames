@@ -18,8 +18,10 @@ public class Battle {
      * @param armyTwo the opposing army
      */
     public Battle(Army armyOne, Army armyTwo) {
-        this.armyOne = armyOne;
-        this.armyTwo = armyTwo;
+        if (armyOne.hasUnits() && armyTwo.hasUnits()) {
+            this.armyOne = armyOne;
+            this.armyTwo = armyTwo;
+        } else throw new IllegalArgumentException("Both armies needs to contain at least 1 warrior");
     }
 
     /**

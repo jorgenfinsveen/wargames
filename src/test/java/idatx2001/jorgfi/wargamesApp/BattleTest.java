@@ -1,5 +1,6 @@
 package idatx2001.jorgfi.wargamesApp;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class BattleTest {
     @Test
     public void testSimulation() {
 
+        // Positive Test
         ArrayList<Unit> armyList1 = new ArrayList<>();
         ArrayList<Unit> armyList2 = new ArrayList<>();
 
@@ -58,6 +60,14 @@ public class BattleTest {
         System.out.println(winner.getName() + " wins with " + winner.getAllUnits().size() +
                 " warriors left");
         assertTrue(winner.hasUnits());
+
+
+        // Negative test
+        if (winner.equals(army1)) {
+            assertFalse(army2.hasUnits());
+        } else {
+            assertFalse(army1.hasUnits());
+        }
         System.out.println(winner.getAllUnits() + " wins");
     }
 }

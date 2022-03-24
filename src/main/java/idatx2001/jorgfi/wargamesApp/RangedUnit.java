@@ -23,6 +23,10 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health) {
         super(name, health, 15, 8);
+
+        if (name == null || " ".equals(name) || health <= 0) {
+            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
+        } 
     }
 
     /**

@@ -1,6 +1,8 @@
 package idatx2001.jorgfi.wargamesApp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -18,14 +20,19 @@ public class InfantryUnitTest {
     @Test
     public void testCreationOfInfantryUnitObjectWithMainConstructor() {
 
-        Unit infantryUnit1 = new InfantryUnit("Footman", 100, 75, 50);
+        // Positive tests
+        InfantryUnit infantryUnit1 = new InfantryUnit("Footman", 100, 75, 50);
 
         assertEquals("Footman", infantryUnit1.getName());
         assertEquals(100, infantryUnit1.getHealth());
         assertEquals(75, infantryUnit1.getAttack());
         assertEquals(50, infantryUnit1.getArmor());
-        assertEquals(2, infantryUnit1.getAttackBonus());
-        assertEquals(1, infantryUnit1.getResistBonus());
+
+
+        // Negative Tests
+        assertThrows(IllegalArgumentException.class, () -> {
+            InfantryUnit infantryUnit2 = new InfantryUnit("",-100,-100,-100);
+        });
     }
 
     /**
@@ -36,13 +43,30 @@ public class InfantryUnitTest {
     @Test
     public void testCreationOfInfantryUnitObjectWithSimpleConstructor() {
 
-        Unit infantryUnit2 = new InfantryUnit("Grunt", 125);
+        // Positive Tests
+        InfantryUnit infantryUnit1 = new InfantryUnit("Grunt", 125);
 
-        assertEquals("Grunt", infantryUnit2.getName());
-        assertEquals(125, infantryUnit2.getHealth());
-        assertEquals(15, infantryUnit2.getAttack());
-        assertEquals(10, infantryUnit2.getArmor());
-        assertEquals(2, infantryUnit2.getAttackBonus());
-        assertEquals(1, infantryUnit2.getResistBonus());
+        assertEquals("Grunt", infantryUnit1.getName());
+        assertEquals(125, infantryUnit1.getHealth());
+        assertEquals(15, infantryUnit1.getAttack());
+        assertEquals(10, infantryUnit1.getArmor());
+
+
+        // Negative Tests
+        assertThrows(IllegalArgumentException.class, () -> {
+            InfantryUnit infantryUnit2 = new InfantryUnit("",-100);
+        });
+    }
+
+    /**
+     * Tests that the getAttackBonus() and getResistBonus() methods returns
+     * correct values;
+     */
+    @Test
+    public void testGettersForAttackBonusAndResistBonus() {
+        InfantryUnit infantryUnit = new InfantryUnit("Grunt", 125);
+
+        assertEquals(2, infantryUnit.getAttackBonus());
+        assertEquals(1, infantryUnit.getResistBonus());
     }
 }

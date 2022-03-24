@@ -1,6 +1,8 @@
 package idatx2001.jorgfi.wargamesApp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -19,12 +21,19 @@ public class CavalryUnitTest {
     @Test
     public void testCreationOfCavalryUnitObjectWithMainConstructor() {
 
-        Unit cavalryUnit1 = new CavalryUnit("Knight", 100, 75, 50);
+        // Positive Test
+        CavalryUnit cavalryUnit1 = new CavalryUnit("Knight", 100, 75, 50);
 
         assertEquals("Knight", cavalryUnit1.getName());
         assertEquals(100, cavalryUnit1.getHealth());
         assertEquals(75, cavalryUnit1.getAttack());
         assertEquals(50, cavalryUnit1.getArmor());
+
+
+        // Negative Test 
+        assertThrows(IllegalArgumentException.class, () -> {
+            CavalryUnit cavalryUnit2 = new CavalryUnit("", -100,-100,-100);
+        });
     }
 
     /**
@@ -35,12 +44,19 @@ public class CavalryUnitTest {
     @Test
     public void testCreationOfCavalryUnitObjectWithSimpleConstructor() {
 
-        Unit cavalryUnit2 = new CavalryUnit("Raider", 125);
+        // Positive Test
+        CavalryUnit cavalryUnit1 = new CavalryUnit("Raider", 125);
 
-        assertEquals("Raider", cavalryUnit2.getName());
-        assertEquals(125, cavalryUnit2.getHealth());
-        assertEquals(20, cavalryUnit2.getAttack());
-        assertEquals(12, cavalryUnit2.getArmor());
+        assertEquals("Raider", cavalryUnit1.getName());
+        assertEquals(125, cavalryUnit1.getHealth());
+        assertEquals(20, cavalryUnit1.getAttack());
+        assertEquals(12, cavalryUnit1.getArmor());
+
+
+        // Negative Test 
+        assertThrows(IllegalArgumentException.class, () -> {
+            CavalryUnit cavalryUnit2 = new CavalryUnit("", -100);
+        });
     }
 
     /**
@@ -49,8 +65,8 @@ public class CavalryUnitTest {
      */
     @Test
     public void testCorrectValueReturnedFromGetAttackBonusAndGetResistBonus() {
-        Unit cavalryUnit1 = new CavalryUnit("Knight", 100, 75, 50);
-        Unit cavalryUnit2 = new CavalryUnit("Raider", 125);
+        CavalryUnit cavalryUnit1 = new CavalryUnit("Knight", 100, 75, 50);
+        CavalryUnit cavalryUnit2 = new CavalryUnit("Raider", 125);
 
         assertEquals(6, cavalryUnit1.getAttackBonus());
         cavalryUnit1.attack(cavalryUnit2);

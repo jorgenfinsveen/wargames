@@ -1,6 +1,9 @@
 package idatx2001.jorgfi.wargamesApp;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import org.junit.jupiter.api.Test;
 
 
@@ -18,12 +21,19 @@ public class RangedUnitTest {
     @Test
     public void testCreationOfRangedUnitObjectWithMainConstructor() {
 
-        Unit rangedUnit1 = new RangedUnit("Archer", 100, 75, 50);
+        // Positive test
+        RangedUnit rangedUnit1 = new RangedUnit("Archer", 100, 75, 50);
 
         assertEquals("Archer", rangedUnit1.getName());
         assertEquals(100, rangedUnit1.getHealth());
         assertEquals(75, rangedUnit1.getAttack());
         assertEquals(50, rangedUnit1.getArmor());
+
+
+        // Negative test
+        assertThrows(IllegalArgumentException.class, () -> {
+            RangedUnit rangedUnit2 = new RangedUnit("", -100, -100, -100);
+        });
     }
 
     /**
@@ -34,12 +44,19 @@ public class RangedUnitTest {
     @Test
     public void testCreationOfRangedUnitObjectWithSimpleConstructor() {
 
-        Unit rangedUnit2 = new RangedUnit("Spearman", 125);
+        // Positive test
+        RangedUnit rangedUnit1 = new RangedUnit("Spearman", 125);
 
-        assertEquals("Spearman", rangedUnit2.getName());
-        assertEquals(125, rangedUnit2.getHealth());
-        assertEquals(15, rangedUnit2.getAttack());
-        assertEquals(8, rangedUnit2.getArmor());
+        assertEquals("Spearman", rangedUnit1.getName());
+        assertEquals(125, rangedUnit1.getHealth());
+        assertEquals(15, rangedUnit1.getAttack());
+        assertEquals(8, rangedUnit1.getArmor());
+
+
+         // Negative test
+         assertThrows(IllegalArgumentException.class, () -> {
+            RangedUnit rangedUnit2 = new RangedUnit("", -100);
+        });
     }
 
     /**
@@ -48,8 +65,8 @@ public class RangedUnitTest {
      */
     @Test
     public void testCorrectValueReturnedFromGetAttackBonusAndGetResistBonus() {
-        Unit rangedUnit1 = new RangedUnit("Archer", 100, 75, 50);
-        Unit rangedUnit2 = new RangedUnit("Spearman", 125);
+        RangedUnit rangedUnit1 = new RangedUnit("Archer", 100, 75, 50);
+        RangedUnit rangedUnit2 = new RangedUnit("Spearman", 125);
 
         assertEquals(3, rangedUnit1.getAttackBonus());
         assertEquals(6, rangedUnit1.getResistBonus());

@@ -25,10 +25,14 @@ public abstract class Unit {
      * @param armor  int representing extra protection on top of the units health
      */
     public Unit(String name, int health, int attack, int armor) {
-        this.name = name;
-        this.health = health;
-        this.attack = attack;
-        this.armor = armor;
+        if (name != null && !" ".equals(name) && health > 0 && attack > 0 && armor > 0) {
+            this.name = name;
+            this.health = health;
+            this.attack = attack;
+            this.armor = armor;
+        } else {
+            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
+        }
     }
 
     /**
