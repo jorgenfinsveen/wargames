@@ -1,5 +1,13 @@
 package idatx2001.jorgfi.wargamesApp;
 
+// Todo: Gjør numberOfTimesAttacked og numberOfTimesDealthAttack til variabler i denne klassen framfor i subklassene
+// Todo: Kanskje kjøre if for å sjekke hver enkelt parameter i konstruktørene, ikke bare en
+// Todo: I Battle-klassa, kontroller at en arme1 !== arme2
+// Todo: I Battle-klassa, lag countervariabel for å gjøre slik at annenhver arme angriper først
+// Todo: I Battle-klassa, lag egne metoder for angrep
+
+
+
 /**
  * Represents a Unit in the game. The subclasses inherit
  * the Unit-class methods. Is an abstract class.

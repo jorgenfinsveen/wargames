@@ -1,9 +1,9 @@
 package idatx2001.jorgfi.wargamesApp;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * Represents an Army. It is a collection of different units
@@ -16,7 +16,7 @@ public class Army {
      * Fields
      */
     private String name;
-    private List<Unit> units;
+    private ArrayList<Unit> units;
 
     /**
      * Constructor which only takes the name parameter.
@@ -44,7 +44,7 @@ public class Army {
      * @param units  List which represents a list of units which are the
      *              soldiers of the army.
      */
-    public Army(String name, List<Unit> units) {
+    public Army(String name, ArrayList<Unit> units) {
         if (name != null && !" ".equals(name) && units.size() > 0) {
             this.name = name;
             // Declares an ArrayList and fills it with the contents of units
@@ -82,7 +82,7 @@ public class Army {
      * 
      * @param units List of units to be added to the army
      */
-    public void addAll(List<Unit> units) {
+    public void addAll(ArrayList<Unit> units) {
         if (units != null) {
             this.units.addAll(units);
         } else {
@@ -118,19 +118,18 @@ public class Army {
      * @return List
      */
     public ArrayList<Unit> getAllUnits() {
-        return (ArrayList<Unit>) this.units;
+        return units;
     }
 
     /**
      * Method that picks a random unit from the army
      * 
-     * @return random Unit
+     * @return random Unit from the army
      */
     public Unit getRandom() {
         Unit randomUnit = null;
-        Random rand = new Random();
-        if (units.size() > 0) {
-            randomUnit = units.get(rand.nextInt(units.size()));
+        if (hasUnits()) {
+           randomUnit = units.get(new Random().nextInt(units.size()));
         }
         return randomUnit;
     }
@@ -159,6 +158,67 @@ public class Army {
     @Override
     public int hashCode() {
         return Objects.hash(name, units);
+    }
+
+
+    /** 
+     * Makes a String with the given name and units of the Army
+     * 
+     * @return String containing name + units
+     */
+    @Override
+    public String toString() {
+        return "Army: " + "\n" +
+                "name: " + this.name + "\n" +
+                "units: " + this.units;
+    }
+
+
+    /**
+     * Gets all RangedUnits in the army-instance
+     * 
+     * @return ArrayList containing all RangedUnits
+     */
+    public ArrayList<Unit> getAllRangedUnits() {
+        return (ArrayList<Unit>) getAllUnits().stream()
+                .filter(RangedUnit.class::isInstance)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Gets all InfantryUnits in the army-instance
+     * 
+     * @return ArrayList containing all InfantryUnits
+     */
+    public ArrayList<Unit> getAllInfantryUnits() {
+        return (ArrayList<Unit>) getAllUnits().stream()
+                .filter(InfantryUnit.class::isInstance)
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Gets all CavalryUnits in the army-instance, but 
+     * excludes the CommanderUnits which are sub-classes of
+     * CavalryUnit
+     * 
+     * @return ArrayList containing all CavalryUnits exept CommanderUnits
+     */
+    public ArrayList<Unit> getAllCavalryUnits() {
+        return (ArrayList<Unit>) getAllUnits().stream()
+                .filter(CavalryUnit.class::isInstance)
+                .filter(unit -> !(unit instanceof CommanderUnit))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Gets all CommanderUnits in the army-instance
+     * 
+     * @return ArrayList containing all CommanderUnits
+     */
+    public ArrayList<Unit> getAllCommanderUnits() {
+        return (ArrayList<Unit>) getAllUnits().stream()
+                .filter(CommanderUnit.class::isInstance)
+                .collect(Collectors.toList());
     }
 
 }
