@@ -5,6 +5,8 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+// Todo: Demonstrere github
+
 /**
  * Represents an Army. It is a collection of different units
  * 
