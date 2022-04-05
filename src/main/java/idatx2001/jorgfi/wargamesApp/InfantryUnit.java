@@ -16,9 +16,8 @@ public class InfantryUnit extends Unit {
      */
     public InfantryUnit(String name, int health) {
         super(name, health, 15, 10);
-        if (name == null || " ".equals(name) || health <= 0) {
-            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
-        } 
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**
@@ -31,6 +30,8 @@ public class InfantryUnit extends Unit {
      */
     public InfantryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**

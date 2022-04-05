@@ -26,10 +26,8 @@ public class CavalryUnit extends Unit {
         // Inherits name and health from the super-class
         // But has own values for attack and armor
         super(name, health, 20, 12);
-
-        if (name == null || " ".equals(name) || health <= 0) {
-            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
-        } 
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**
@@ -43,6 +41,8 @@ public class CavalryUnit extends Unit {
      */
     public CavalryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**

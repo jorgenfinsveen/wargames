@@ -17,9 +17,8 @@ public class CommanderUnit extends CavalryUnit {
      */
     public CommanderUnit(String name, int health) {
         super(name, health, 25, 15);
-        if (name == null || " ".equals(name) || health <= 0) {
-            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
-        } 
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**
@@ -33,5 +32,7 @@ public class CommanderUnit extends CavalryUnit {
      */
     public CommanderUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 }

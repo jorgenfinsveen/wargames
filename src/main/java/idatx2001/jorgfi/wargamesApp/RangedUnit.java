@@ -13,7 +13,6 @@ public class RangedUnit extends Unit {
      * the unit has recieved. Is relevant for the
      * getResistBonus() method.
      */
-    private int amountOfRecievedHits = 0;
 
     /**
      * Simplified constructor with default values for attack and armor
@@ -23,10 +22,8 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health) {
         super(name, health, 15, 8);
-
-        if (name == null || " ".equals(name) || health <= 0) {
-            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
-        } 
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**
@@ -39,6 +36,8 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
+        amountOfRecievedHits = 0;
+        numberOfDealtHits = 0;
     }
 
     /**

@@ -1,13 +1,5 @@
 package idatx2001.jorgfi.wargamesApp;
 
-// Todo: Gjør numberOfTimesAttacked og numberOfTimesDealthAttack til variabler i denne klassen framfor i subklassene
-// Todo: Kanskje kjøre if for å sjekke hver enkelt parameter i konstruktørene, ikke bare en
-// Todo: I Battle-klassa, kontroller at en arme1 !== arme2
-// Todo: I Battle-klassa, lag countervariabel for å gjøre slik at annenhver arme angriper først
-// Todo: I Battle-klassa, lag egne metoder for angrep
-
-
-
 /**
  * Represents a Unit in the game. The subclasses inherit
  * the Unit-class methods. Is an abstract class.
@@ -23,6 +15,9 @@ public abstract class Unit {
     private int attack;
     private int armor;
 
+    protected int numberOfDealtHits;
+    protected int amountOfRecievedHits;
+
     /**
      * Constructor initializing a Unit-instance. 
      * 
@@ -32,15 +27,16 @@ public abstract class Unit {
      *               capable of causing
      * @param armor  int representing extra protection on top of the units health
      */
-    public Unit(String name, int health, int attack, int armor) {
-        if (name != null && !" ".equals(name) && health > 0 && attack > 0 && armor > 0) {
-            this.name = name;
-            this.health = health;
-            this.attack = attack;
-            this.armor = armor;
-        } else {
-            throw new IllegalArgumentException("Invalid values for unit. Please check parameters and try again.");
-        }
+    public Unit(String name, int health, int attack, int armor) throws IllegalArgumentException {
+        if (name.isBlank()) throw new IllegalArgumentException("You must give the unit a name");
+        if (health <= 0) throw new IllegalArgumentException("Health must be above 0");
+        if (attack <= 0) throw new IllegalArgumentException("Attack must be above 0");
+        this.name = name;
+        this.setHealth(health);
+        this.attack = attack;
+        this.armor = armor;
+        this.numberOfDealtHits = 0;
+        this.amountOfRecievedHits = 0;
     }
 
     /**

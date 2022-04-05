@@ -18,10 +18,10 @@ public class Battle {
      * @param armyTwo the opposing army
      */
     public Battle(Army armyOne, Army armyTwo) {
-        if (armyOne.hasUnits() && armyTwo.hasUnits()) {
-            this.armyOne = armyOne;
-            this.armyTwo = armyTwo;
-        } else throw new IllegalArgumentException("Both armies needs to contain at least 1 warrior");
+        if (!armyOne.hasUnits() || !armyTwo.hasUnits()) throw new IllegalArgumentException("Both armies needs to contain at least 1 warrior");
+        if (armyOne.equals(armyTwo)) throw new IllegalArgumentException("An army cannot fight itself");
+        this.armyOne = armyOne;
+        this.armyTwo = armyTwo;
     }
 
     /**
@@ -36,23 +36,17 @@ public class Battle {
      * @return Army-object which are victorious
      */
     public Army simulate() {
-        Unit opponent1;
-        Unit opponent2;
         Army victorious;
+        int round = 0;
 
         while (armyOne.hasUnits() && armyTwo.hasUnits()) {
-            opponent1 = armyOne.getRandom();
-            opponent2 = armyTwo.getRandom();
 
-            while (opponent1.getHealth() > 0 && opponent2.getHealth() > 0) {
-                opponent1.attack(opponent2);
-                opponent2.attack(opponent1);
-            }
-            if (opponent1.getHealth() == 0) {
-                armyOne.remove(opponent1);
+            if (round % 2 == 0) {
+                armyAttack(armyOne, armyTwo);
             } else {
-                armyTwo.remove(opponent2);
+                armyAttack(armyTwo, armyOne);
             }
+            round++;
         }
         if (armyOne.hasUnits()) {
             victorious = armyOne;
@@ -60,6 +54,22 @@ public class Battle {
             victorious = armyTwo;
         }
         return victorious;
+    }
+
+    /**
+     * Performs an attack on a random unit in the opposing army.
+     * Removes the defending unit from the army if their health
+     * is 0 or lower.
+     * @param attacker the army which will be attacking
+     * @param defender the army which will be defending
+     */
+    public void armyAttack(Army attacker, Army defender) {
+        Unit attackingUnit = attacker.getRandom();
+        Unit defendingUnit = defender.getRandom();
+        attackingUnit.attack(defendingUnit);
+        if (defendingUnit.getHealth() <= 0) {
+            defender.remove(defendingUnit);
+        }
     }
 
     /**
