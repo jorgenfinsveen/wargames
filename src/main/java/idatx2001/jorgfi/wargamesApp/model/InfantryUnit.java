@@ -1,4 +1,4 @@
-package idatx2001.jorgfi.wargamesApp;
+package idatx2001.jorgfi.wargamesApp.model;
 
 /**
  * Represents a unit of the type infantry in the wargame.

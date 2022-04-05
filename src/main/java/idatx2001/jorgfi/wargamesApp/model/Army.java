@@ -1,4 +1,4 @@
-package idatx2001.jorgfi.wargamesApp;
+package idatx2001.jorgfi.wargamesApp.model;
 
 import java.util.ArrayList;
 import java.util.Objects;

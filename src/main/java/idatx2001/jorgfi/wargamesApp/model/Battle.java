@@ -1,4 +1,4 @@
-package idatx2001.jorgfi.wargamesApp;
+package idatx2001.jorgfi.wargamesApp.model;
 
 /**
  * Represents a simulation of a battle between to armies.

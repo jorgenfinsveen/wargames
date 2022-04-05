@@ -1,4 +1,4 @@
-package idatx2001.jorgfi.wargamesApp;
+package idatx2001.jorgfi.wargamesApp.model;
 
 /**
  * Sub-class that inherit from the super class Unit representing

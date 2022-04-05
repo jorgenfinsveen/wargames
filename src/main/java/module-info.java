@@ -3,7 +3,9 @@ module wargames {
     requires javafx.controls;
     requires javafx.fxml;
 
-    opens idatx2001.jorgfi.wargamesApp to javafx.fxml;
+    opens idatx2001.jorgfi.wargamesApp.controller to javafx.fxml;
+    opens idatx2001.jorgfi.wargamesApp.model to javafx.fxml;
 
-    exports idatx2001.jorgfi.wargamesApp;
+    exports idatx2001.jorgfi.wargamesApp.controller;
+    exports idatx2001.jorgfi.wargamesApp.model;
 }

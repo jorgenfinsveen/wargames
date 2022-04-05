@@ -12,7 +12,7 @@ import javafx.stage.Stage;
  * Launches the application and the graphical user interface
  * @author jorgfi
  */
-public class GUI extends Application {
+public class Main extends Application {
 
     /**
      * Initializes the application
