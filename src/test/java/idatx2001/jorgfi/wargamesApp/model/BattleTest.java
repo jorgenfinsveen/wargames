@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+// Todo: Check health for GiantUnits in createSampleArmy 1 and 2
+
 
 /**
  * Tests the Battle-class. It is also used
@@ -40,8 +42,7 @@ public class BattleTest {
 
         Battle battle = new Battle(army1, army2);
         Army winner = battle.simulate();
-        // System.out.println(winner.getName() + " wins with " + winner.getAllUnits().size() +
-        //        " warriors left");
+        System.out.println(winner.getName() + " wins with " + winner.getAllUnits().size() + " warriors left: "  + winner.getAllUnits());
         assertTrue(winner.hasUnits());
 
 
@@ -64,6 +65,7 @@ public class BattleTest {
         armyList1.addAll(factory.createListOfUnits(100, "Ranger", "Archer", 100));
         armyList1.addAll(factory.createListOfUnits(5, "White wizard", "Wizard", 75));
         armyList1.addAll(factory.createListOfUnits(5, "Dark wizard", "Wich", 75));
+        armyList1.add(factory.createNewUnit("Giant", "Troll", 30));
         armyList1.add(factory.createNewUnit("Commander", "Mountain King", 180));
 
         return armyList1;
@@ -80,6 +82,7 @@ public class BattleTest {
         armyList2.addAll(factory.createListOfUnits(100, "Ranger", "Spearman", 100));
         armyList2.addAll(factory.createListOfUnits(5, "White wizard", "Warlock", 75));
         armyList2.addAll(factory.createListOfUnits(5, "Dark wizard", "Mage", 75));
+        armyList2.add(factory.createNewUnit("Giant", "Titan", 30));
         armyList2.add(factory.createNewUnit("Commander", "Gul´dan", 180));
 
         return armyList2;
@@ -130,10 +133,10 @@ public class BattleTest {
 
         opponent.setHealth(0);
         humanArmy.remove(opponent);
-        assertEquals(710, humanArmy.getArmySize());
+        assertEquals(711, humanArmy.getArmySize());
         assertEquals(0, opponent.getHealth());
         wizard.castSpell(humanArmy);
-        assertEquals(711, humanArmy.getArmySize());
+        assertEquals(712, humanArmy.getArmySize());
         assertEquals(100, opponent.getHealth());
     }
 

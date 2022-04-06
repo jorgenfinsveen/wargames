@@ -74,6 +74,7 @@ public class Battle {
                 defender.remove(defendingUnit);
 
             }
+            // Wizards doesnt attack, they cast spells
         } else if (attackingUnit.getClass() == WhiteWizardUnit.class) {
             attackingUnit.castSpell(attacker);
         } else if (attackingUnit.getClass() == DarkWizardUnit.class) {
@@ -88,6 +89,4 @@ public class Battle {
     public String toString() {
         return simulate().getName() + " won the battle!";
     }
-
-    
 }

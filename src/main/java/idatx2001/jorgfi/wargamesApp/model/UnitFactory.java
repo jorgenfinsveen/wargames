@@ -11,7 +11,9 @@ import java.util.List;
  */
 public class UnitFactory {
     
-    public static final List<String> UNIT_TYPES = List.of("Ranger", "Infantry", "Commander", "Cavalry", "White wizard", "Dark wizard");
+    public static final List<String> UNIT_TYPES = List.of("Ranger", "Infantry", "Commander",
+                                                          "Cavalry", "White wizard",
+                                                          "Dark wizard", "Giant");
 
     
     /** 
@@ -33,6 +35,7 @@ public class UnitFactory {
             case "Cavalry": return new CavalryUnit(name, health);
             case "White wizard": return new WhiteWizardUnit(name, health);
             case "Dark wizard": return new DarkWizardUnit(name, health);
+            case "Giant": return new GiantUnit(name, health);
             default: return null;
         }
     }

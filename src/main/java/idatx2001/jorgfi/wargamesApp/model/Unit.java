@@ -100,6 +100,7 @@ public abstract class Unit {
         return getName() + " has " + getHealth() + "hp left.";
     }
 
+
     /**
      * Mutates the health-field of the unit.
      * 
@@ -138,7 +139,8 @@ public abstract class Unit {
     public void attack(Unit opponent) {
         int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
                 + (opponent.getArmor() + opponent.getResistBonus());
-
+        // An attack can not give more health to a unit
+        if (newHealth > opponent.getHealth()) newHealth = opponent.getHealth();
         opponent.setHealth(newHealth);
         this.numberOfDealtHits++;
     }
