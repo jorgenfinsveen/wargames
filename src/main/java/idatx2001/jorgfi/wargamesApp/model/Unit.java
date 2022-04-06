@@ -168,4 +168,7 @@ public abstract class Unit {
      * @return String type of the unit
      */
     public abstract String getType();
+
+    public void castSpell(Army attacker) {
+    }
 }

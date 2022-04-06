@@ -46,6 +46,8 @@ public class Battle {
             } else {
                 armyAttack(armyTwo, armyOne);
             }
+            armyOne.curseActivation();
+            armyTwo.curseActivation();
             round++;
         }
         if (armyOne.hasUnits()) {
@@ -66,9 +68,16 @@ public class Battle {
     public void armyAttack(Army attacker, Army defender) {
         Unit attackingUnit = attacker.getRandom();
         Unit defendingUnit = defender.getRandom();
-        attackingUnit.attack(defendingUnit);
-        if (defendingUnit.getHealth() <= 0) {
-            defender.remove(defendingUnit);
+        if (attackingUnit.getClass() != Wizard.class) {
+            attackingUnit.attack(defendingUnit);
+            if (defendingUnit.getHealth() <= 0) {
+                defender.remove(defendingUnit);
+
+            }
+        } else if (attackingUnit.getClass() == WhiteWizardUnit.class) {
+            attackingUnit.castSpell(attacker);
+        } else if (attackingUnit.getClass() == DarkWizardUnit.class) {
+            attackingUnit.castSpell(defender);
         }
     }
 
@@ -79,4 +88,6 @@ public class Battle {
     public String toString() {
         return simulate().getName() + " won the battle!";
     }
+
+    
 }

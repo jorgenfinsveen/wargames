@@ -5,8 +5,6 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-// Todo: Demonstrere github
-
 /**
  * Represents an Army. It is a collection of different units
  * 
@@ -19,6 +17,8 @@ public class Army {
      */
     private String name;
     private ArrayList<Unit> units;
+    private ArrayList<Unit> fallenSoldiers = new ArrayList<>();
+    private ArrayList<Unit> cursedSoldiers = new ArrayList<>();
 
     /**
      * Constructor which only takes the name parameter.
@@ -65,6 +65,33 @@ public class Army {
     }
 
     /**
+     * Returns list of all fallen soldiers
+     * 
+     * @return ArrayList<Unit> list over fallen soldiers
+     */
+    public ArrayList<Unit> getFallenSoldiers() {
+        return this.fallenSoldiers;
+    }
+
+    /**
+     * Returns list of all cursed soldiers
+     * 
+     * @return ArrayList<Unit> list over cursed soldiers
+     */
+    public ArrayList<Unit> getCursedSoldiers() {
+        return this.cursedSoldiers;
+    }
+
+ 
+    /**
+     * Adds a unit to the cursedSoldiers list
+     * 
+     * @param unit to be added
+     */
+    public void addToCursedSoldiers(Unit unit) {
+        cursedSoldiers.add(unit);
+    }
+    /**
      * Adds a single unit to the units ArrayList which
      * represents the army members.
      * 
@@ -103,6 +130,7 @@ public class Army {
         } else {
             throw new IllegalArgumentException("ERROR: Unit doesnt exist");
         }
+        fallenSoldiers.add(unit);
     }
 
     /**
@@ -121,6 +149,24 @@ public class Army {
      */
     public ArrayList<Unit> getAllUnits() {
         return units;
+    }
+
+    /**
+     * Removes a fallen unit from the fallenSoldiers ArrayList
+     * 
+     * @param unit to be removed from the ArrayList
+     */
+    public void removeFromFallenSoldiers(Unit unit) {
+        fallenSoldiers.remove(unit);
+    }
+
+    /**
+     * Removes a cursed unit from the cursedSoldiers ArrayList
+     * 
+     * @return unit to be removed from the ArrayList
+     */
+    public void removeFromCursedSoldiers(Unit unit) {
+        cursedSoldiers.remove(unit);
     }
 
     /**
@@ -232,4 +278,17 @@ public class Army {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Represents a curse which will drain 5 hp from those
+     * affected by it for each round of the game.
+     */
+    public void curseActivation() {
+        for (Unit unit : cursedSoldiers) {
+            unit.setHealth(unit.getHealth() - 5);
+            // This is a way to remove a unit from an army.
+            if (unit.getHealth() <= 0) {
+                this.remove(unit);
+            }
+        }
+    }
 }
