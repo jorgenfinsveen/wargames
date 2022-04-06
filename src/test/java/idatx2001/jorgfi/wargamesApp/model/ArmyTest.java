@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
  */
 public class ArmyTest {
 
+    UnitFactory factory = new UnitFactory();
+
     /**
      * Tests that an instance of the Army-class with the simplified
      * constructor gets correctly initialized
@@ -115,18 +117,11 @@ public class ArmyTest {
     public ArrayList<Unit> makeArmyList() {
         ArrayList<Unit> armyList = new ArrayList<>();
 
-        // Fills ArrayList with 500 InfantryUnit instances
-        for (int i = 0; i < 500; i++) {
-            armyList.add(new InfantryUnit("Infantry", 100));
-        }
-
-        // Fills ArrayList with 100 Cavalry- and RangedUnit instances
-        for (int i = 0; i < 100; i++) {
-            armyList.add(new CavalryUnit("Cavalry", 100));
-            armyList.add(new RangedUnit("Ranger", 100));
-        }
-        // Adds a CommanderUnit to the ArrayList
-        armyList.add(new CommanderUnit("Commander", 180));
+        // Fills armyList with units using the factory-class
+        armyList.addAll(factory.createListOfUnits(500, "Infantry", "Footman", 100));
+        armyList.addAll(factory.createListOfUnits(100, "Cavalry", "Knight", 100));
+        armyList.addAll(factory.createListOfUnits(500, "Ranger", "Archer", 100));
+        armyList.add(factory.createNewUnit("Commander", "Mountain King", 180));
 
         return armyList;
     }

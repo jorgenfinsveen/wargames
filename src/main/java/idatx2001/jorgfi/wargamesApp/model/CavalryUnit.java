@@ -8,12 +8,9 @@ package idatx2001.jorgfi.wargamesApp.model;
  */
 public class CavalryUnit extends Unit {
 
-    /**
-     * Field which tells if the unit has attacked
-     * another unit. Relevant for the
-     * getAttackBonus() method.
-     */
-    private boolean dealtHits = false;
+    
+    private static final String UNIT_TYPE = "Cavalry";
+    
 
     /**
      * Simple constructor with suggested values for attack
@@ -56,12 +53,17 @@ public class CavalryUnit extends Unit {
     @Override
     public int getAttackBonus() {
         int bonus;
-        if (!dealtHits) {
+        if (numberOfDealtHits == 0) {
             bonus = 6;
         } else {
             bonus = 2;
         }
-        dealtHits = true;
+        numberOfDealtHits++;
+        if (getTerrainAttackAndResistBonus()[0] != -100) {
+            bonus += getTerrainAttackAndResistBonus()[0];
+        } else {
+            bonus = 0;
+        }
         return bonus;
     }
 
@@ -74,7 +76,34 @@ public class CavalryUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
-        return 1;
+        int bonus = 1;
+        if (getTerrainAttackAndResistBonus()[1] != -100) {
+            bonus += getTerrainAttackAndResistBonus()[1];
+        } else {
+            bonus = 0;
+        }
+        return bonus;
     }
 
-}
+    /**
+     * Calculates extra bonus damage and resistance depending on 
+     * the units terrain.
+     * 
+     * @return int[] bonus representing extra damage- 
+     *          and resist bonus where
+     *          bonus[0] is attack bonus and bonus[1]
+     *          is resist bonus.
+     */
+    @Override
+    public int[] getTerrainAttackAndResistBonus() {
+        int[] bonus = {0,0};
+        if (this.getTerrain().equals("PLAINS")) {
+            bonus[0] = 2;
+            bonus[1] = 0;
+        } else if (this.getTerrain().equals("FOREST")) {
+            bonus[0] = 0;
+            bonus[1] = -100;
+        }
+        return bonus;
+    }
+}   

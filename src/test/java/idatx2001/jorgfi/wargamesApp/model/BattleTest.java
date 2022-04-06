@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
  */
 public class BattleTest {
 
+    UnitFactory factory = new UnitFactory();
+
     /**
      * Tests the simulation.
      * Declares two ArrayLists which represents two armies. It
@@ -34,23 +36,17 @@ public class BattleTest {
         ArrayList<Unit> armyList1 = new ArrayList<>();
         ArrayList<Unit> armyList2 = new ArrayList<>();
 
-        for (int i = 0; i < 500; i++) {
-            armyList1.add(new InfantryUnit("Footman", 100));
-            armyList2.add(new InfantryUnit("Grunt", 100));
-        }
-
-        for (int i = 0; i < 100; i++) {
-            armyList1.add(new CavalryUnit("Knight", 100));
-            armyList2.add(new CavalryUnit("Raider", 100));
-        }
-
-        for (int i = 0; i < 100; i++) {
-            armyList1.add(new RangedUnit("Archer", 100));
-            armyList2.add(new RangedUnit("Spearman", 100));
-        }
-
-        armyList1.add(new CommanderUnit("Mountain King", 180));
-        armyList2.add(new CommanderUnit("Gul´dan", 180));
+        // Fills armyList1
+        armyList1.addAll(factory.createListOfUnits(500, "Infantry", "Footman", 100));
+        armyList1.addAll(factory.createListOfUnits(100, "Cavalry", "Knight", 100));
+        armyList1.addAll(factory.createListOfUnits(100, "Ranger", "Archer", 100));
+        armyList1.add(factory.createNewUnit("Commander", "Mountain King", 180));
+        
+        // Fills armyList2
+        armyList2.addAll(factory.createListOfUnits(500, "Infantry", "Grunt", 100));
+        armyList2.addAll(factory.createListOfUnits(100, "Cavalry", "Raider", 100));
+        armyList2.addAll(factory.createListOfUnits(100, "Ranger", "Spearman", 100));
+        armyList2.add(factory.createNewUnit("Commander", "Gul´dan", 180));
 
         Army army1 = new Army("Human army", armyList1);
         Army army2 = new Army("Orcish horde", armyList2);

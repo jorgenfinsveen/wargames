@@ -9,6 +9,9 @@ package idatx2001.jorgfi.wargamesApp.model;
  */
 public class CommanderUnit extends CavalryUnit {
 
+
+    private static final String UNIT_TYPE = "Commander";
+
     /**
      * Simplified constructor with default values for attack and armor
      * 

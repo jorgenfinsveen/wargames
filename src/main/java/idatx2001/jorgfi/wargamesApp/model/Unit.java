@@ -14,9 +14,14 @@ public abstract class Unit {
     private int health;
     private int attack;
     private int armor;
+    private Terrain terrain;
 
     protected int numberOfDealtHits;
     protected int amountOfRecievedHits;
+
+    private enum Terrain {
+        NONE, HILL, PLAINS, FOREST
+    };
 
     /**
      * Constructor initializing a Unit-instance. 
@@ -37,6 +42,7 @@ public abstract class Unit {
         this.armor = armor;
         this.numberOfDealtHits = 0;
         this.amountOfRecievedHits = 0;
+        this.terrain = Terrain.NONE;
     }
 
     /**
@@ -76,6 +82,15 @@ public abstract class Unit {
     }
 
     /**
+     * Returns the terrain at the units location.
+     * 
+     * @return String terrain name e.g "PLAINS"
+     */
+    public String getTerrain() {
+        return String.valueOf(this.terrain);
+    }
+
+    /**
      * Generating a string which shows the
      * units name and remaining health.
      * 
@@ -94,6 +109,20 @@ public abstract class Unit {
         this.health = health;
         if (this.health < 0) {
             this.health = 0;
+        }
+    }
+
+    /**
+     * Mutates the terrain of the unit. 
+     * 
+     * @param terrain Terrain to be set.
+     */
+    public void setTerrain(String terrain) {
+        switch (terrain.toUpperCase()) {
+            case "HILL": this.terrain = Terrain.HILL;
+            case "FOREST": this.terrain = Terrain.FOREST;
+            case "PLAINS": this.terrain = Terrain.PLAINS;
+            default: this.terrain = Terrain.NONE;
         }
     }
 
@@ -121,4 +150,11 @@ public abstract class Unit {
      * @return in value representing extra protection
      */
     public abstract int getResistBonus();
+
+    /**
+     * Returns further attack and resist bonus depending on the terrain
+     * @return int[] value representing extra damage and resistance
+     */
+    public abstract int[] getTerrainAttackAndResistBonus();
+
 }

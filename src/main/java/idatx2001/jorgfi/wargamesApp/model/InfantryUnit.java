@@ -8,6 +8,8 @@ package idatx2001.jorgfi.wargamesApp.model;
  */
 public class InfantryUnit extends Unit {
 
+    private static final String UNIT_TYPE = "Infantry";
+
     /**
      * Simplified constructor with default values for attack and armor
      * 
@@ -43,7 +45,7 @@ public class InfantryUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        return 2;
+        return 2 + getTerrainAttackAndResistBonus()[0];
     }
 
     /**
@@ -54,6 +56,25 @@ public class InfantryUnit extends Unit {
      */
     @Override
     public int getResistBonus() {
-        return 1;
+        return 1 + getTerrainAttackAndResistBonus()[1];
+    }
+
+    /**
+     * Calculates extra bonus damage and resistance depending on 
+     * the units terrain.
+     * 
+     * @return int[] bonus representing extra damage- 
+     *          and resist bonus where
+     *          bonus[0] is attack bonus and bonus[1]
+     *          is resist bonus.
+     */
+    @Override
+    public int[] getTerrainAttackAndResistBonus() {
+        int[] bonus = {0,0};
+        if (this.getTerrain().equals("FOREST")) {
+            bonus[0] = 2;
+            bonus[1] = 2;
+        }
+        return bonus;
     }
 }

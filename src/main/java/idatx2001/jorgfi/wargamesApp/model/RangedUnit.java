@@ -8,6 +8,8 @@ package idatx2001.jorgfi.wargamesApp.model;
  */
 public class RangedUnit extends Unit {
 
+    private static final String UNIT_TYPE = "Ranger";
+
     /**
      * Field Represents the amount of attacks that
      * the unit has recieved. Is relevant for the
@@ -73,6 +75,28 @@ public class RangedUnit extends Unit {
             bonus = 6;
         }
         amountOfRecievedHits++;
+        return bonus;
+    }
+
+    /**
+     * Calculates extra bonus damage and resistance depending on 
+     * the units terrain.
+     * 
+     * @return int[] bonus representing extra damage- 
+     *          and resist bonus where
+     *          bonus[0] is attack bonus and bonus[1]
+     *          is resist bonus.
+     */
+    @Override
+    public int[] getTerrainAttackAndResistBonus() {
+        int[] bonus = {0,0};
+        if (this.getTerrain().equals("HILL")) {
+            bonus[0] = 2;
+            bonus[1] = 0;
+        } else if (this.getTerrain().equals("FOREST")) {
+            bonus[0] = -1;
+            bonus[1] = 0;
+        }
         return bonus;
     }
 }
