@@ -162,4 +162,10 @@ public abstract class Unit {
      */
     public abstract int[] getTerrainAttackAndResistBonus();
 
+    /**
+     * Returns the type of the unit 
+     * 
+     * @return String type of the unit
+     */
+    public abstract String getType();
 }

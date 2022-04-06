@@ -43,6 +43,16 @@ public class RangedUnit extends Unit {
     }
 
     /**
+     * Returns the type of the unit 
+     * 
+     * @return String type of the unit
+     */
+    @Override
+    public String getType() {
+        return RangedUnit.UNIT_TYPE + "";
+    }
+
+    /**
      * Calculates the attack bonus of this unit and returns it.
      * Abstract method inherited from the Unit-class.
      * 

@@ -37,6 +37,16 @@ public class InfantryUnit extends Unit {
     }
 
     /**
+     * Returns the type of the unit 
+     * 
+     * @return String type of the unit
+     */
+    @Override
+    public String getType() {
+        return InfantryUnit.UNIT_TYPE + "";
+    }
+
+    /**
      * Abstract method inherited from the Unit-class returning 
      * the attack bonus of this unit
      * 

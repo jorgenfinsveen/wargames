@@ -53,8 +53,8 @@ public class BattleTest {
 
         Battle battle = new Battle(army1, army2);
         Army winner = battle.simulate();
-        System.out.println(winner.getName() + " wins with " + winner.getAllUnits().size() +
-                " warriors left");
+        // System.out.println(winner.getName() + " wins with " + winner.getAllUnits().size() +
+        //        " warriors left");
         assertTrue(winner.hasUnits());
 
 
@@ -64,6 +64,5 @@ public class BattleTest {
         } else {
             assertFalse(army1.hasUnits());
         }
-        System.out.println(winner.getAllUnits() + " wins");
     }
 }

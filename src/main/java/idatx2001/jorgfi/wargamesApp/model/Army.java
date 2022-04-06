@@ -137,6 +137,15 @@ public class Army {
     }
 
     /**
+     * Returns the amount of units in the army
+     * 
+     * @return int amount of units in the army
+     */
+    public int getArmySize() {
+        return units.size();
+    }
+
+    /**
      * Checks if two objects are equal.
      * 
      * @param object to be compared with

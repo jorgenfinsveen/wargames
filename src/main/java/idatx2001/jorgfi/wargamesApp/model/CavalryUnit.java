@@ -43,6 +43,16 @@ public class CavalryUnit extends Unit {
     }
 
     /**
+     * Returns the type of the unit 
+     * 
+     * @return String type of the unit
+     */
+    @Override
+    public String getType() {
+        return CavalryUnit.UNIT_TYPE + "";
+    }
+
+    /**
      * Abstract method from the Unit class.
      * Calculates the bonus damage which the unit can deal
      * 

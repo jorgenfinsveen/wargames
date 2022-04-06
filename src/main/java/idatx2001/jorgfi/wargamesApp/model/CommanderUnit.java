@@ -38,4 +38,14 @@ public class CommanderUnit extends CavalryUnit {
         amountOfRecievedHits = 0;
         numberOfDealtHits = 0;
     }
+
+    /**
+     * Returns the type of the unit 
+     * 
+     * @return String type of the unit
+     */
+    @Override
+    public String getType() {
+        return CommanderUnit.UNIT_TYPE + "";
+    }
 }
