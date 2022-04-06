@@ -123,7 +123,7 @@ public class BattleTest {
      */
     @Test
     public void testWhiteWizardUnitCastSpellMethod() {
-        Army humanArmy = new Army("Human army", createSampleArmy3());
+        Army humanArmy = new Army("Human army", createSampleArmy1());
         Army wizardArmy = new Army("Wizard army", createWhiteWizardArmy());
         Unit opponent = humanArmy.getRandom();
         Unit wizard = wizardArmy.getRandom();
@@ -143,7 +143,7 @@ public class BattleTest {
      */
     @Test
     public void testDarkWizardUnitCastSpellMethod() {
-        Army humanArmy = new Army("Human army", createSampleArmy1());
+        Army humanArmy = new Army("Human army", createSampleArmy3());
         Army wizardArmy = new Army("Wizard army", createDarkWizardArmy());
         Unit wizard = wizardArmy.getRandom();
         for (int i = 0; i < 3; i++) {
