@@ -25,10 +25,7 @@
             <artifactId>maven-compiler-plugin</artifactId>
             <version>3.8.1</version>
             <configuration>
-                <release>17</release> 
-                <compilerArgs>
-                    --enable-preview
-                </compilerArgs>
+                <release>16</release> 
             </configuration>
         </plugin>
 
@@ -38,9 +35,6 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.0.0-M5</version>
             <configuration>
-                <argLine>
-                    --enable-preview
-                </argLine>
               </configuration>
         </plugin>
 
@@ -98,6 +92,7 @@
         <artifactId>javafx-controls</artifactId>
         <version>17.0.2</version>
     </dependency>
+    
     <dependency>
         <groupId>org.openjfx</groupId>
         <artifactId>javafx-fxml</artifactId>

@@ -58,7 +58,6 @@ public class CavalryUnit extends Unit {
         } else {
             bonus = 2;
         }
-        numberOfDealtHits++;
         if (getTerrainAttackAndResistBonus()[0] != -100) {
             bonus += getTerrainAttackAndResistBonus()[0];
         } else {

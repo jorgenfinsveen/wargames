@@ -69,4 +69,31 @@ public class InfantryUnitTest {
         assertEquals(2, infantryUnit.getAttackBonus());
         assertEquals(1, infantryUnit.getResistBonus());
     }
+
+    /**
+     * Tests that the getTerrainAttackAndResistBonus() methods returns
+     * correct values, and that those are applied to the getters for 
+     * attack and resist bonus.
+     */
+    @Test
+    public void testCOrrectValueReturnedFromGetAttackBonusWithTerrainBonus() {
+        InfantryUnit infantry = new InfantryUnit("Footman", 100, 75, 50);
+        infantry.setTerrain("FOREST");
+        assertEquals(2, infantry.getTerrainAttackAndResistBonus()[0]);
+        assertEquals(2, infantry.getTerrainAttackAndResistBonus()[1]);
+        assertEquals(4, infantry.getAttackBonus()); 
+        assertEquals(3, infantry.getResistBonus()); 
+
+        infantry.setTerrain("PLAINS");
+        assertEquals(2, infantry.getAttackBonus());
+        assertEquals(1, infantry.getResistBonus());
+
+        infantry.setTerrain("HILL");
+        assertEquals(2, infantry.getAttackBonus());
+        assertEquals(1, infantry.getResistBonus());
+
+        infantry.setTerrain("NONE");
+        assertEquals(2, infantry.getAttackBonus());
+        assertEquals(1, infantry.getResistBonus());
+    }
 }

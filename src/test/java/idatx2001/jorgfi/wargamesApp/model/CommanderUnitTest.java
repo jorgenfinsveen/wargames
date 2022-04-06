@@ -68,4 +68,30 @@ public class CommanderUnitTest {
           assertEquals(1, commanderUnit1.getResistBonus());
       }
 
+      /**
+     * Tests that the getTerrainAttackAndResistBonus() methods returns
+     * correct values, and that those are applied to the getters for 
+     * attack and resist bonus.
+     */
+    @Test
+    public void testCOrrectValueReturnedFromGetAttackBonusWithTerrainBonus() {
+        CommanderUnit commander = new CommanderUnit("Chief", 180, 75, 50);
+        commander.setTerrain("FOREST");
+        assertEquals(0, commander.getTerrainAttackAndResistBonus()[0]);
+        assertEquals(-100, commander.getTerrainAttackAndResistBonus()[1]);
+        assertEquals(0, commander.getResistBonus());
+
+        commander.setTerrain("PLAINS");
+        assertEquals(8, commander.getAttackBonus());
+        assertEquals(1, commander.getResistBonus());
+
+        commander.setTerrain("HILL");
+        assertEquals(6, commander.getAttackBonus());
+        assertEquals(1, commander.getResistBonus());
+
+        commander.setTerrain("NONE");
+        assertEquals(6, commander.getAttackBonus());
+        assertEquals(1, commander.getResistBonus());
+    }
+
 }

@@ -1,7 +1,6 @@
 package idatx2001.jorgfi.wargamesApp.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
@@ -72,9 +71,37 @@ public class RangedUnitTest {
         assertEquals(6, rangedUnit1.getResistBonus());
 
         rangedUnit2.attack(rangedUnit1);
-        assertEquals(4, rangedUnit1.getResistBonus());
+        assertEquals(4, rangedUnit1.getResistBonus()); 
 
         rangedUnit2.attack(rangedUnit1);
-        assertEquals(2, rangedUnit1.getResistBonus());
+        assertEquals(2, rangedUnit1.getResistBonus()); 
+    }
+
+    /**
+     * Tests that the getTerrainAttackAndResistBonus() methods returns
+     * correct values, and that those are applied to the getters for 
+     * attack and resist bonus.
+     */
+    @Test
+    public void testCOrrectValueReturnedFromGetAttackBonusWithTerrainBonus() {
+        RangedUnit ranger = new RangedUnit("Footman", 100, 75, 50);
+        ranger.setTerrain("HILL");
+        assertEquals(2, ranger.getTerrainAttackAndResistBonus()[0]);
+        assertEquals(0, ranger.getTerrainAttackAndResistBonus()[1]);
+        assertEquals(5, ranger.getAttackBonus()); // 3
+        assertEquals(6, ranger.getResistBonus()); // 6
+
+        ranger.setTerrain("FOREST");
+        assertEquals(2, ranger.getAttackBonus());
+        System.out.println(ranger.amountOfRecievedHits);
+        assertEquals(6, ranger.getResistBonus());
+
+        ranger.setTerrain("PLANES");
+        assertEquals(3, ranger.getAttackBonus());
+        assertEquals(6, ranger.getResistBonus());
+
+        ranger.setTerrain("NONE");
+        assertEquals(3, ranger.getAttackBonus());
+        assertEquals(6, ranger.getResistBonus());
     }
 }

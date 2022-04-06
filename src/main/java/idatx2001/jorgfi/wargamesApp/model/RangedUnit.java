@@ -51,7 +51,7 @@ public class RangedUnit extends Unit {
      */
     @Override
     public int getAttackBonus() {
-        return 3;
+        return 3 + getTerrainAttackAndResistBonus()[0];
     }
 
     /**
@@ -66,16 +66,15 @@ public class RangedUnit extends Unit {
     @Override
     public int getResistBonus() {
         int bonus = 0;
-
-        if (amountOfRecievedHits > 2) {
-            bonus = 2;
-        } else if (amountOfRecievedHits > 1) {
-            bonus = 4;
-        } else if (amountOfRecievedHits == 0) {
+        
+        if (amountOfRecievedHits == 0) {
             bonus = 6;
+        } else if (amountOfRecievedHits == 1) {
+            bonus = 4;
+        } else {
+            bonus = 2;
         }
-        amountOfRecievedHits++;
-        return bonus;
+        return bonus + getTerrainAttackAndResistBonus()[1];
     }
 
     /**

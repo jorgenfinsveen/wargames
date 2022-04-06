@@ -21,7 +21,7 @@ public abstract class Unit {
 
     private enum Terrain {
         NONE, HILL, PLAINS, FOREST
-    };
+    }
 
     /**
      * Constructor initializing a Unit-instance. 
@@ -110,6 +110,7 @@ public abstract class Unit {
         if (this.health < 0) {
             this.health = 0;
         }
+        this.amountOfRecievedHits++;
     }
 
     /**
@@ -118,13 +119,16 @@ public abstract class Unit {
      * @param terrain Terrain to be set.
      */
     public void setTerrain(String terrain) {
-        switch (terrain.toUpperCase()) {
-            case "HILL": this.terrain = Terrain.HILL;
-            case "FOREST": this.terrain = Terrain.FOREST;
-            case "PLAINS": this.terrain = Terrain.PLAINS;
-            default: this.terrain = Terrain.NONE;
+        if ("HILL".equals(terrain.toUpperCase())) {
+            this.terrain = Terrain.HILL;
+        } else if ("FOREST".equals(terrain.toUpperCase())) {
+            this.terrain = Terrain.FOREST;
+        } else if ("PLAINS".equals(terrain.toUpperCase())) {
+            this.terrain = Terrain.PLAINS;
+        } else {
+            this.terrain = Terrain.NONE;
         }
-    }
+    } 
 
     /**
      * Deploys an attack on a opponent.
@@ -136,6 +140,7 @@ public abstract class Unit {
                 + (opponent.getArmor() + opponent.getResistBonus());
 
         opponent.setHealth(newHealth);
+        this.numberOfDealtHits++;
     }
 
     /**
