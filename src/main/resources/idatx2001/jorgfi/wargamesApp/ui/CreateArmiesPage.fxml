@@ -38,9 +38,10 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="800.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -83,9 +84,10 @@
     </MenuBar>
       <AnchorPane prefHeight="373.0" prefWidth="640.0">
          <children>
-            <BorderPane layoutX="-1.0" prefHeight="67.0" prefWidth="650.0" style="-fx-background-color: blue;" />
-            <BorderPane layoutX="-2.0" layoutY="67.0" prefHeight="306.0" prefWidth="204.0" style="-fx-background-color: red;" />
-            <BorderPane layoutX="202.0" layoutY="307.0" prefHeight="66.0" prefWidth="447.0" style="-fx-background-color: green;" />
+            <BorderPane layoutX="-1.0" prefHeight="67.0" prefWidth="1440.0" style="-fx-background-color: blue;" />
+            <BorderPane layoutX="-2.0" layoutY="67.0" prefHeight="706.0" prefWidth="204.0" style="-fx-background-color: red;" />
+            <BorderPane layoutX="202.0" layoutY="652.0" prefHeight="121.0" prefWidth="1237.0" style="-fx-background-color: green;" />
+            <Pane layoutX="203.0" layoutY="67.0" prefHeight="586.0" prefWidth="1238.0" />
          </children>
       </AnchorPane>
   </children>

@@ -1,4 +1,4 @@
-package idatx2001.jorgfi.wargamesApp.controller;
+package idatx2001.jorgfi.wargamesApp.ui;
 
 
 

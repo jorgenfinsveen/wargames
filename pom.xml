@@ -45,7 +45,7 @@
             <artifactId>javafx-maven-plugin</artifactId>
             <version>0.0.8</version>
             <configuration>
-                <mainClass>wargames/idatx2001.jorgfi.wargamesApp.Main</mainClass>
+                <mainClass>wargames/idatx2001.jorgfi.wargamesApp.WargamesMain</mainClass>
             </configuration>
         </plugin>
 
