@@ -24,8 +24,6 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health) {
         super(name, health, 15, 8);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -38,8 +36,6 @@ public class RangedUnit extends Unit {
      */
     public RangedUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -77,9 +73,9 @@ public class RangedUnit extends Unit {
     public int getResistBonus() {
         int bonus = 0;
         
-        if (amountOfRecievedHits == 0) {
+        if (getAmountOfRecievedHits() == 0) {
             bonus = 6;
-        } else if (amountOfRecievedHits == 1) {
+        } else if (getAmountOfRecievedHits() == 1) {
             bonus = 4;
         } else {
             bonus = 2;

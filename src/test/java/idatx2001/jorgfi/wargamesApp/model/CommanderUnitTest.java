@@ -94,4 +94,25 @@ public class CommanderUnitTest {
         assertEquals(1, commander.getResistBonus());
     }
 
+    /**
+     * Tests that the Units health gets decreased upon attacked
+     * Sets infantry attack to 48 so that the total damage is 50
+     */
+    @Test
+    public void testThatUnitActuallyGetsDamaged() {
+        CommanderUnit commander = new CommanderUnit("Titan", 150, 10, 0);
+        InfantryUnit infantry = new InfantryUnit("King", 200, 48, 100);
+
+        assertEquals(150, commander.getHealth());
+        infantry.attack(commander);
+        assertEquals(101, commander.getHealth());
+        infantry.attack(commander);
+        assertEquals(52, commander.getHealth());
+        infantry.attack(commander);
+        assertEquals(3, commander.getHealth());
+        infantry.attack(commander);
+        assertEquals(0, commander.getHealth());
+        assertEquals(false, commander.isAlive());
+    }
+
 }

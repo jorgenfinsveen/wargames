@@ -281,12 +281,14 @@ public class Army {
     /**
      * Represents a curse which will drain 5 hp from those
      * affected by it for each round of the game.
+     * It uses setHealthWithoutAttack so that the curse, 
+     * does not affect the amount of recieved hits
      */
     public void curseActivation() {
         for (Unit unit : cursedSoldiers) {
-            unit.setHealth(unit.getHealth() - 5);
+            unit.setHealthWithoutAttack(unit.getHealth() - 5);
             // This is a way to remove a unit from an army.
-            if (unit.getHealth() <= 0) {
+            if (!unit.isAlive()) {
                 this.remove(unit);
             }
         }

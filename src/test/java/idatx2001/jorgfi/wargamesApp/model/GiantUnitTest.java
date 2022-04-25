@@ -18,7 +18,7 @@ public class GiantUnitTest {
      * Checks if all fields of the object are correct.
      */
     @Test
-    public void testCreationOfCavalryUnitObjectWithMainConstructor() {
+    public void testCreationOfGiantUnitObjectWithMainConstructor() {
 
         // Positive Test
         GiantUnit giant = new GiantUnit("Titan", 100, 99, 98);
@@ -41,7 +41,7 @@ public class GiantUnitTest {
      * object is correct.
      */
     @Test
-    public void testCreationOfCavalryUnitObjectWithSimpleConstructor() {
+    public void testCreationOfGiantUnitObjectWithSimpleConstructor() {
 
         // Positive Test
         GiantUnit giant = new GiantUnit("Troll", 125);
@@ -49,7 +49,7 @@ public class GiantUnitTest {
         assertEquals("Troll", giant.getName());
         assertEquals(125, giant.getHealth());
         assertEquals(120, giant.getAttack());
-        assertEquals(100, giant.getArmor());
+        assertEquals(80, giant.getArmor());
 
 
         // Negative Test 
@@ -64,9 +64,9 @@ public class GiantUnitTest {
      * getResistBonus() gives the correct values as result.
      */
     @Test
-    public void testCorrectValueReturnedFromGetAttack() {
+    public void testCorrectValueReturnedFromGetAttackBonus() {
         GiantUnit giant = new GiantUnit("Titan", 100);
-        assertEquals(0, giant.getAttackBonus()); // attack = d120 + N0 
+        assertEquals(0, giant.getAttackBonus()); 
     }
 
     /**
@@ -75,7 +75,7 @@ public class GiantUnitTest {
      * attack and resist bonus.
      */
     @Test
-    public void testCOrrectValueReturnedFromGetAttackBonusWithTerrainBonus() {
+    public void testCorrectValueReturnedFromGetAttackBonusWithTerrainBonus() {
         GiantUnit giant = new GiantUnit("Titan", 100);
         giant.setTerrain("FOREST");
         assertEquals(20, giant.getTerrainAttackAndResistBonus()[0]);
@@ -106,12 +106,15 @@ public class GiantUnitTest {
         assertEquals(3, giant.getAttackFrequency());
 
         giant.setTerrain("FOREST");
+        giant.updateAttackFrequency();
         assertEquals(4, giant.getAttackFrequency());
 
         giant.setTerrain("PLAINS");
+        giant.updateAttackFrequency();
         assertEquals(2, giant.getAttackFrequency());
 
         giant.setTerrain("HILL");
+        giant.updateAttackFrequency();
         assertEquals(3, giant.getAttackFrequency());
     }
 
@@ -132,5 +135,24 @@ public class GiantUnitTest {
         assertEquals(382, commander.getHealth());
         giant.attack(commander);
         assertEquals(264, commander.getHealth());
+    }
+
+    /**
+     * Tests that the Giants health gets decreased upon attacked
+     * Sets infantry attack to 48 so that the total damage is 50
+     */
+    @Test
+    public void testThatUnitActuallyGetsDamaged() {
+        GiantUnit giant = new GiantUnit("Titan", 150, 10, 0);
+        InfantryUnit infantry = new InfantryUnit("King", 200, 48, 100);
+
+        assertEquals(150, giant.getHealth());
+        infantry.attack(giant);
+        assertEquals(100, giant.getHealth());
+        infantry.attack(giant);
+        assertEquals(50, giant.getHealth());
+        infantry.attack(giant);
+        assertEquals(0, giant.getHealth());
+        assertEquals(false, giant.isAlive());
     }
 }

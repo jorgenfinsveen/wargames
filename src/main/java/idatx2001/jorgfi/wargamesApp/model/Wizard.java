@@ -21,8 +21,6 @@ public abstract class Wizard extends Unit{
         // Inherits name and health from the super-class
         // But has own values for attack and armor
         super(name, health, 20, 20);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -36,8 +34,6 @@ public abstract class Wizard extends Unit{
      */
     public Wizard(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -101,6 +97,7 @@ public abstract class Wizard extends Unit{
     /**
      * Casts a spell on the opponent. Replaces the attack() method.
      */
+    @Override
     public abstract void castSpell(Army army);
 }   
 

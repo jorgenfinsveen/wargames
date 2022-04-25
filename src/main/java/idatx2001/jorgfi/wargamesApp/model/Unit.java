@@ -15,9 +15,9 @@ public abstract class Unit {
     private int attack;
     private int armor;
     private Terrain terrain;
-
-    protected int numberOfDealtHits;
-    protected int amountOfRecievedHits;
+    private int attackFrequency;
+    private int numberOfDealtHits;
+    private int amountOfRecievedHits;
 
     private enum Terrain {
         NONE, HILL, PLAINS, FOREST
@@ -43,7 +43,10 @@ public abstract class Unit {
         this.numberOfDealtHits = 0;
         this.amountOfRecievedHits = 0;
         this.terrain = Terrain.NONE;
+        this.attackFrequency = 1;
     }
+
+// ---------------- ACCESSORS --------------------------------
 
     /**
      * Returns the name of the unit-object
@@ -96,53 +99,34 @@ public abstract class Unit {
      * 
      * @return String consisting the units name and health
      */
+    @Override
     public String toString() {
         return getName() + " has " + getHealth() + "hp left.";
     }
 
-
     /**
-     * Mutates the health-field of the unit.
+     * Get the attack frequency
      * 
-     * @param health int the new health which will be adjusted to
+     * @return attackFrequency frequence of the attack
      */
-    public void setHealth(int health) {
-        this.health = health;
-        if (this.health < 0) {
-            this.health = 0;
-        }
-        this.amountOfRecievedHits++;
+    public int getAttackFrequency() {
+        return this.attackFrequency;
     }
 
     /**
-     * Mutates the terrain of the unit. 
-     * 
-     * @param terrain Terrain to be set.
+     * Get number of hits dealt by unit
+     * @return int number of dealt hits
      */
-    public void setTerrain(String terrain) {
-        if ("HILL".equals(terrain.toUpperCase())) {
-            this.terrain = Terrain.HILL;
-        } else if ("FOREST".equals(terrain.toUpperCase())) {
-            this.terrain = Terrain.FOREST;
-        } else if ("PLAINS".equals(terrain.toUpperCase())) {
-            this.terrain = Terrain.PLAINS;
-        } else {
-            this.terrain = Terrain.NONE;
-        }
-    } 
+    public int getNumberOfDealtHits() {
+        return this.numberOfDealtHits;
+    }
 
     /**
-     * Deploys an attack on a opponent.
-     * 
-     * @param opponent Unit which are to be attacked
+     * Get amount of hits recieved by unit
+     * @return int amount number of recieved hits
      */
-    public void attack(Unit opponent) {
-        int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
-                + (opponent.getArmor() + opponent.getResistBonus());
-        // An attack can not give more health to a unit
-        if (newHealth > opponent.getHealth()) newHealth = opponent.getHealth();
-        opponent.setHealth(newHealth);
-        this.numberOfDealtHits++;
+    public int getAmountOfRecievedHits() {
+        return this.amountOfRecievedHits;
     }
 
     /**
@@ -173,4 +157,101 @@ public abstract class Unit {
 
     public void castSpell(Army attacker) {
     }
-}
+
+
+    /**
+     * Checks if the units health is 0 or not
+     * 
+     * @return boolean indicating if the units is alive or not
+     */
+    public boolean isAlive() {
+        boolean alive = true;
+        if (this.getHealth() <= 0) {
+            alive = false;
+        } 
+        return alive;
+    }
+
+
+
+// ---------------- MUTATORS --------------------------------
+
+    /**
+     * Increments numberOfDealtHits by 1
+     */
+    public void incrementNumberOfDealtHits() {
+        this.numberOfDealtHits++;
+    }
+
+    /**
+     * Increments amountOfRecievedHits by 1
+     */
+    public void incrementAmountOfRecievedHits() {
+        this.amountOfRecievedHits++;
+    }
+
+    /**
+     * Mutates the health-field of the unit.
+     * 
+     * @param health int the new health which will be adjusted to
+     */
+    public void setHealth(int health) {
+        this.health = health;
+        if (this.health < 0) {
+            this.health = 0;
+        }
+        incrementAmountOfRecievedHits();
+    }
+
+    /**
+     * Mutates the health-field but it does not count as an attack
+     * @param health int the units new health
+     */
+    public void setHealthWithoutAttack(int health) {
+        this.health = health;
+        if (this.health < 0) {
+            this.health = 0;
+        }
+    }
+
+    /**
+     * Mutates the terrain of the unit. 
+     * 
+     * @param terrain Terrain to be set.
+     */
+    public void setTerrain(String terrain) {
+        if ("HILL".equals(terrain.toUpperCase())) {
+            this.terrain = Terrain.HILL;
+        } else if ("FOREST".equals(terrain.toUpperCase())) {
+            this.terrain = Terrain.FOREST;
+        } else if ("PLAINS".equals(terrain.toUpperCase())) {
+            this.terrain = Terrain.PLAINS;
+        } else {
+            this.terrain = Terrain.NONE;
+        }
+    } 
+
+    /**
+     * Deploys an attack on a opponent.
+     * 
+     * @param opponent Unit which are to be attacked
+     */
+    public void attack(Unit opponent) {
+        int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
+                + (opponent.getArmor() + opponent.getResistBonus());
+        // An attack can not give more health to a unit
+        if (newHealth > opponent.getHealth()) newHealth = opponent.getHealth();
+        opponent.setHealth(newHealth);
+        incrementNumberOfDealtHits();
+    }
+
+    /**
+     * Sets a new value for the attack frequency
+     * 
+     * @param int amount of turns before next attack
+     */
+    public void setAttackFrequency(int frequency) {
+            this.attackFrequency = frequency;
+        }
+    }
+

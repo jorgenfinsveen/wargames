@@ -17,4 +17,8 @@ public class WargamesMain {
   public static void main(String[] args) {
     WargamesApp.main(args);
   }
+
+  public WargamesMain() {
+    // Left empty intentionally.
+  }
 }

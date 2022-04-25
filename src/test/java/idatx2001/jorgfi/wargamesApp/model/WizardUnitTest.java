@@ -111,5 +111,26 @@ public class WizardUnitTest {
         assertEquals("White wizard", white.getType());
         assertEquals("Dark wizard", dark.getType());
     }
+
+    /**
+     * Tests that the Units health gets decreased upon attacked
+     * Sets infantry attack to 48 so that the total damage is 50
+     */
+    @Test
+    public void testThatUnitActuallyGetsDamaged() {
+        WhiteWizardUnit wizard = new WhiteWizardUnit("Titan", 150, 10, 0);
+        InfantryUnit infantry = new InfantryUnit("King", 200, 48, 100);
+
+        assertEquals(150, wizard.getHealth());
+        infantry.attack(wizard);
+        assertEquals(102, wizard.getHealth());
+        infantry.attack(wizard);
+        assertEquals(54, wizard.getHealth());
+        infantry.attack(wizard);
+        assertEquals(6, wizard.getHealth());
+        infantry.attack(wizard);
+        assertEquals(0, wizard.getHealth());
+        assertEquals(false, wizard.isAlive());
+    }
 }
 

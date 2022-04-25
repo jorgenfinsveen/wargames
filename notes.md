@@ -12,10 +12,10 @@ IDEER TIL UTVIDELSER
 9. Se etter proffe konsepter å bruke i koden
 
 
-- Lag positive og negative tester for alle klassene
+# - Lag positive og negative tester for alle klassene
 - Lag en fxml gui 
 # - Opprett css fil til gui
 # - Fjern kommentar rundt open.jfx plugin når GUI.java er på plass
 # - Opprett GUI og Controller klassene
 # - Gå gjennom javadoc, javadoc kan ikke starte med f.eks. kun @return
-- Bruk streams og lambda der det passer
+# - Bruk streams og lambda der det passer

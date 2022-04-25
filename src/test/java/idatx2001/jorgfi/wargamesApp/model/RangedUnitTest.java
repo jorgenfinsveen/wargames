@@ -93,7 +93,7 @@ public class RangedUnitTest {
 
         ranger.setTerrain("FOREST");
         assertEquals(2, ranger.getAttackBonus());
-        System.out.println(ranger.amountOfRecievedHits);
+        System.out.println(ranger.getAmountOfRecievedHits());
         assertEquals(6, ranger.getResistBonus());
 
         ranger.setTerrain("PLANES");
@@ -103,5 +103,26 @@ public class RangedUnitTest {
         ranger.setTerrain("NONE");
         assertEquals(3, ranger.getAttackBonus());
         assertEquals(6, ranger.getResistBonus());
+    }
+
+    /**
+     * Tests that the Units health gets decreased upon attacked
+     * Sets infantry attack to 48 so that the total damage is 50
+     */
+    @Test
+    public void testThatUnitActuallyGetsDamaged() {
+        RangedUnit ranger = new RangedUnit("Titan", 150, 10, 0);
+        InfantryUnit infantry = new InfantryUnit("King", 200, 48, 100);
+
+        assertEquals(150, ranger.getHealth());
+        infantry.attack(ranger);
+        assertEquals(106, ranger.getHealth());
+        infantry.attack(ranger);
+        assertEquals(60, ranger.getHealth());
+        infantry.attack(ranger);
+        assertEquals(12, ranger.getHealth());
+        infantry.attack(ranger);
+        assertEquals(0, ranger.getHealth());
+        assertEquals(false, ranger.isAlive());
     }
 }

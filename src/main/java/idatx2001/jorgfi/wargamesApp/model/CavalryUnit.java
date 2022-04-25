@@ -23,8 +23,6 @@ public class CavalryUnit extends Unit {
         // Inherits name and health from the super-class
         // But has own values for attack and armor
         super(name, health, 20, 12);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -38,8 +36,6 @@ public class CavalryUnit extends Unit {
      */
     public CavalryUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -63,7 +59,7 @@ public class CavalryUnit extends Unit {
     @Override
     public int getAttackBonus() {
         int bonus;
-        if (numberOfDealtHits == 0) {
+        if (getNumberOfDealtHits() == 0) {
             bonus = 6;
         } else {
             bonus = 2;

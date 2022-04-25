@@ -15,8 +15,6 @@ public class DarkWizardUnit extends Wizard{
      */
     public DarkWizardUnit(String name, int health) {
         super(name, health, 25, 15);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**
@@ -30,8 +28,6 @@ public class DarkWizardUnit extends Wizard{
      */
     public DarkWizardUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
     }
 
     /**

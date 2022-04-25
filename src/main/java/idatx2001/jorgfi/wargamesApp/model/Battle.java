@@ -70,7 +70,7 @@ public class Battle {
         Unit defendingUnit = defender.getRandom();
         if (attackingUnit.getClass() != Wizard.class) {
             attackingUnit.attack(defendingUnit);
-            if (defendingUnit.getHealth() <= 0) {
+            if (!defendingUnit.isAlive()) {
                 defender.remove(defendingUnit);
 
             }
@@ -86,6 +86,7 @@ public class Battle {
      * Calls simulate() and returns the winner as a String.
      * @return String containing the name of the victorious army
      */
+    @Override
     public String toString() {
         return simulate().getName() + " won the battle!";
     }

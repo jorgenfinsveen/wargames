@@ -20,10 +20,10 @@ public class WargamesApp extends Application {
   public void start(Stage stage) {
     try {
       
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CreateArmiesPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("startup_page.fxml"));
         Parent root = fxmlLoader.load();
 
-        Scene scene = new Scene(root, 1440, 800);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     } catch (Exception e) {

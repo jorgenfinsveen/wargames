@@ -10,10 +10,9 @@ package idatx2001.jorgfi.wargamesApp.model;
  */
 public class GiantUnit extends Unit{
 
-    // Todo: Adjust Giant health and armor, they are almost always the only one standing after a simulation
+    // TODO: Finn en bedre måte å oppdatere attackFrequency
 
     private static final String UNIT_TYPE = "Giant";
-    private int attackFrequency = 3;
     
     /**
      * Simple constructor with suggested values for attack
@@ -25,9 +24,8 @@ public class GiantUnit extends Unit{
     public GiantUnit(String name, int health) {
         // Inherits name and health from the super-class
         // But has own values for attack and armor
-        super(name, health, 120, 100);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
+        super(name, health, 120, 80);
+        updateAttackFrequency();
     }
 
     /**
@@ -41,8 +39,7 @@ public class GiantUnit extends Unit{
      */
     public GiantUnit(String name, int health, int attack, int armor) {
         super(name, health, attack, armor);
-        amountOfRecievedHits = 0;
-        numberOfDealtHits = 0;
+        updateAttackFrequency();
     }
 
     /**
@@ -113,33 +110,23 @@ public class GiantUnit extends Unit{
      * 
      * @param int amount of turns before next attack
      */
-    public int getAttackFrequency() {
+    public void updateAttackFrequency() {
         if (this.getTerrain().equals("PLAINS")) setAttackFrequency(2);
         else if (this.getTerrain().equals("FOREST")) setAttackFrequency(4);
         else if (this.getTerrain().equals("HILL")) setAttackFrequency(3);
         else setAttackFrequency(3);
-
-        return this.attackFrequency;
     }
 
-    /**
-     * Sets a new value for the attack frequency
-     * 
-     * @param int amount of turns before next attack
-     */
-    public void setAttackFrequency(int frequence) {
-        this.attackFrequency = frequence;
-    }
 
     @Override
     public void attack(Unit opponent) {
-        if (numberOfDealtHits % getAttackFrequency() == 0) {
+        if (this.getNumberOfDealtHits() % getAttackFrequency() == 0) {
             int newHealth = opponent.getHealth() - (this.getAttack() + this.getAttackBonus())
                     + (opponent.getArmor() + opponent.getResistBonus());
             // An attack can not give more health to a unit
             if (newHealth > opponent.getHealth()) newHealth = opponent.getHealth();
             opponent.setHealth(newHealth);
         } 
-        this.numberOfDealtHits++;
+        incrementNumberOfDealtHits();
     }
 }

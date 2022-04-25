@@ -100,4 +100,25 @@ public class CavalryUnitTest {
         assertEquals(6, cavalry.getAttackBonus());
         assertEquals(1, cavalry.getResistBonus());
     }
+
+    /**
+     * Tests that the Units health gets decreased upon attacked
+     * Sets infantry attack to 48 so that the total damage is 50
+     */
+    @Test
+    public void testThatUnitActuallyGetsDamaged() {
+        CavalryUnit cavalry = new CavalryUnit("Titan", 150, 10, 0);
+        InfantryUnit infantry = new InfantryUnit("King", 200, 48, 100);
+
+        assertEquals(150, cavalry.getHealth());
+        infantry.attack(cavalry);
+        assertEquals(101, cavalry.getHealth());
+        infantry.attack(cavalry);
+        assertEquals(52, cavalry.getHealth());
+        infantry.attack(cavalry);
+        assertEquals(3, cavalry.getHealth());
+        infantry.attack(cavalry);
+        assertEquals(0, cavalry.getHealth());
+        assertEquals(false, cavalry.isAlive());
+    }
 }
