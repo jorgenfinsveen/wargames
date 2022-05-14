@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
-
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="150.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <top>
@@ -23,7 +23,6 @@
       <GridPane gridLinesVisible="true" BorderPane.alignment="CENTER">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -32,14 +31,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <RadioButton fx:id="radioBtnNone" mnemonicParsing="false" text="None" />
-            <RadioButton fx:id="radioBtnPlains" mnemonicParsing="false" text="Plains" GridPane.rowIndex="1" />
-            <RadioButton fx:id="radioBtnHill" mnemonicParsing="false" text="Hill" GridPane.rowIndex="2" />
-            <RadioButton fx:id="radioBtnForest" mnemonicParsing="false" text="Forest" GridPane.rowIndex="3" />
-            <ImageView fitHeight="35.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" />
-            <ImageView fitHeight="35.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ImageView fitHeight="35.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ImageView fitHeight="35.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <RadioButton fx:id="radioBtnNone" mnemonicParsing="false" text="None">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></RadioButton>
+            <RadioButton fx:id="radioBtnPlains" mnemonicParsing="false" text="Plains" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></RadioButton>
+            <RadioButton fx:id="radioBtnHill" mnemonicParsing="false" text="Hill" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></RadioButton>
+            <RadioButton fx:id="radioBtnForest" mnemonicParsing="false" text="Forest" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin></RadioButton>
          </children>
       </GridPane>
    </center>
@@ -50,4 +57,10 @@
          </children>
       </AnchorPane>
    </bottom>
+   <left>
+      <Pane prefHeight="200.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+   </right>
 </BorderPane>

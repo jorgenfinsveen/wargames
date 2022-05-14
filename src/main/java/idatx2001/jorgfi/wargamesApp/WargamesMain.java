@@ -1,6 +1,5 @@
 package idatx2001.jorgfi.wargamesApp;
 
-import idatx2001.jorgfi.wargamesApp.ui.WargamesApp;
 
 
 /**
@@ -14,9 +13,14 @@ public class WargamesMain {
    *
    * @param args command line arguments
    */
+
+
+   /** 
   public static void main(String[] args) {
     WargamesApp.main(args);
   }
+
+  */
 
   public WargamesMain() {
     // Left empty intentionally.

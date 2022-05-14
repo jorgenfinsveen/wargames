@@ -9,5 +9,6 @@ module wargames {
 
     exports idatx2001.jorgfi.wargamesApp;
     exports idatx2001.jorgfi.wargamesApp.model;
+    exports idatx2001.jorgfi.wargamesApp.ui;
     opens idatx2001.jorgfi.wargamesApp.model;
 }
