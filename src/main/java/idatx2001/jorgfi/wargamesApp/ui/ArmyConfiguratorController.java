@@ -85,6 +85,7 @@ public class ArmyConfiguratorController {
   // TODO: UnitConfiguratorController trenger tilgang på metoden ovenfor
 
 
+  // COMMENT FOR COMMIT TESTING
 
 
 
