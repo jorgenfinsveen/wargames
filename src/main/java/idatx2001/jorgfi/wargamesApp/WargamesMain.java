@@ -1,6 +1,6 @@
 package idatx2001.jorgfi.wargamesApp;
 
-
+import idatx2001.jorgfi.wargamesApp.ui.MainWindow;
 
 /**
  * Launches the application and the graphical user interface
@@ -13,14 +13,11 @@ public class WargamesMain {
    *
    * @param args command line arguments
    */
-
-
-   /** 
   public static void main(String[] args) {
-    WargamesApp.main(args);
+    MainWindow.main(args);
   }
 
-  */
+  
 
   public WargamesMain() {
     // Left empty intentionally.
